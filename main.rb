@@ -2,6 +2,7 @@
 
 # This sample application creates a simple HIT using Libraries for Amazon Web Services.
 # Example taken from http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMechanicalTurkGettingStartedGuide/CreatingAHIT.html#Ruby
+#
 
 require 'ruby-aws'
 @mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Sandbox
