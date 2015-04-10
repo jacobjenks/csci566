@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuestionForm xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd">
+	<Question>
+		<QuestionIdentifier>1</QuestionIdentifier>
+		<DisplayName>Food Source</DisplayName>
+		<IsRequired>true</IsRequired>
+		<QuestionContent>
+			<Text>Which of the following food sources are contained within the following image?</Text>
+			<Binary>
+				<MimeType>
+					<Type>image</Type>
+					<SubType>jpg</SubType>
+				</MimeType>
+				<DataURL>http://blogs.riverfronttimes.com/gutcheck/steak071310.jpg</DataURL>
+				<AltText>A picture of food.</AltText>
+			</Binary>
+			
+			<!--
+			<EmbeddedBinary>
+				<EmbeddedMimeType>
+					<Type>image</Type>
+					<SubType>gif</SubType>
+				</EmbeddedMimeType>
+				<DataURL>http://tictactoe.amazon.com/game/01523/board.gif</DataURL>
+				<AltText>A picture of food.</AltText>
+				<Width>400</Width>
+				<Height>300</Height>
+				<ApplicationParameter>
+					<Name>food<Name>
+					<Value>food</Value>
+				</ApplicationParameter>
+			</EmbeddedBinary>
+			-->
+			
+		</QuestionContent>
+		<AnswerSpecification>
+		  <SelectionAnswer>
+			<StyleSuggestion>checkbox</StyleSuggestion>
+			<Selections>
+				<Selection>
+					<SelectionIdentifier>0</SelectionIdentifier>
+					<Text>Animal Source</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>1</SelectionIdentifier>
+					<Text>Plant Source</Text>
+				</Selection>
+			</Selections>
+		  </SelectionAnswer>
+		</AnswerSpecification>
+	</Question>
+</QuestionForm>

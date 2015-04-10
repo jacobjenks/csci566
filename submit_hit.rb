@@ -4,7 +4,7 @@
 # Example taken from http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMechanicalTurkGettingStartedGuide/CreatingAHIT.html#Ruby
 #
 
-require 'ruby-aws'
+require 'mturk'
 @mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Sandbox
 
 # Use this line instead if you want the production website.
@@ -20,7 +20,7 @@ def createNewHIT
   
   # Define the location of the externalized question (QuestionForm) file.
   rootDir = File.dirname $0
-  questionFile = rootDir + "/food.question"
+  questionFile = rootDir + "/food_1.question"
 
   # Load the question (QuestionForm) file
   question = File.read( questionFile )
