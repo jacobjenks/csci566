@@ -7,7 +7,9 @@
 require 'mturk'
 require 'sqlite3'
 
-base_directory = "/home/ec2-user/csci566/"
+base_directory = File.join(File.expand_path File.dirname __FILE__, "..")
+puts base_directory
+exit
 
 @mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Sandbox
 
