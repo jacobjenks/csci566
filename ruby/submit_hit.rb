@@ -7,9 +7,7 @@
 require 'mturk'
 require 'sqlite3'
 
-base_directory = File.join(File.expand_path File.dirname __FILE__, "..")
-puts base_directory
-exit
+base_directory = File.join(File.expand_path(File.dirname(__FILE__)), "../")
 
 @mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Sandbox
 
@@ -59,12 +57,16 @@ def getHITUrl( hitTypeId )
 end
 
 
+puts base_directory
+
 db = SQLite3::Database.open base_directory+"db/food.db"
 result = db.prepare("Select * FROM image").execute
 
 result.each do |row|
-	puts row.join "\s"
+	puts row.join
 end
+
+p(result)
 	
 #createNewHIT('www.test.com/test.jpg')
 
