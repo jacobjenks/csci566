@@ -25,6 +25,8 @@ def createNewHIT(imageURL)
   rewardAmount = 0.05 # 5 cents
   
   # Define the location of the externalized question (QuestionForm) file.
+  #rootDir = File.dirname $0
+  #questionFile = rootDir + "../questions/food_1.question"
   questionFile = "questions/food_1.question"
 
   # Load the question (QuestionForm) file
@@ -55,12 +57,8 @@ end
 db = SQLite3::Database.open base_directory+"db/food.db"
 result = db.prepare("SELECT * FROM image WHERE id NOT IN(SELECT i.id FROM image i JOIN hit h ON i.id=h.image_id WHERE h.task_tier = 0)").execute
 
-i = 0
 result.each do |row|
-	i = i + 1
 	hit = createNewHIT(row[1])
 	db.prepare("INSERT INTO hit VALUES ('#{row[0]}', '0', '#{hit[:HITId]}')").execute
 end
 
-puts ""
-puts "Created #{i} hits"
