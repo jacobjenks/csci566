@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS image(
 
 CREATE TABLE IF NOT EXISTS hit(
 	image_id int NOT NULL,
+	task_tier int NOT NULL,
 	hit_id varchar(128) NOT NULL,
 	PRIMARY KEY(image_id, hit_id)
 	FOREIGN KEY(image_id)

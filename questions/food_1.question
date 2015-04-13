@@ -11,7 +11,7 @@
 					<Type>image</Type>
 					<SubType>jpg</SubType>
 				</MimeType>
-				<DataURL>http://blogs.riverfronttimes.com/gutcheck/steak071310.jpg</DataURL>
+				<DataURL>$imageURL</DataURL>
 				<AltText>A picture of food.</AltText>
 			</Binary>
 			
@@ -21,7 +21,7 @@
 					<Type>image</Type>
 					<SubType>gif</SubType>
 				</EmbeddedMimeType>
-				<DataURL>http://tictactoe.amazon.com/game/01523/board.gif</DataURL>
+				<DataURL>$imageURL</DataURL>
 				<AltText>A picture of food.</AltText>
 				<Width>400</Width>
 				<Height>300</Height>
