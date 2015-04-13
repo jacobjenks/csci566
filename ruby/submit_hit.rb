@@ -27,25 +27,23 @@ def createNewHIT(imageURL)
   # Define the location of the externalized question (QuestionForm) file.
   #rootDir = File.dirname $0
   #questionFile = rootDir + "../questions/food_1.question"
-  questionFile = "../questions/food_1.question"
+  questionFile = "questions/food_1.question"
 
   # Load the question (QuestionForm) file
   question = File.read( questionFile )
   question = question.gsub(/\$imageURL/, imageURL)
   
-  puts question
-  
-  #result = @mturk.createHIT( :Title => title,
-  #  :Description => desc,
-  #  :MaxAssignments => numAssignments,
-  #  :Reward => { :Amount => rewardAmount, :CurrencyCode => 'USD' },
-  #  :Question => question,
-  #  :Keywords => keywords )
+  result = @mturk.createHIT( :Title => title,
+    :Description => desc,
+    :MaxAssignments => numAssignments,
+    :Reward => { :Amount => rewardAmount, :CurrencyCode => 'USD' },
+    :Question => question,
+    :Keywords => keywords )
 
-  #puts "Created HIT: #{result[:HITId]}"
-  #puts "HIT Location: #{getHITUrl( result[:HITTypeId] )}"
+  puts "Created HIT: #{result[:HITId]}"
+  puts "HIT Location: #{getHITUrl( result[:HITTypeId] )}"
   
-  #return result
+  return result
 end
 
 def getHITUrl( hitTypeId )
@@ -56,18 +54,11 @@ def getHITUrl( hitTypeId )
   end
 end
 
-
-puts base_directory
-
 db = SQLite3::Database.open base_directory+"db/food.db"
-result = db.prepare("Select * FROM image").execute
+result = db.prepare("SELECT * FROM image WHERE id NOT IN(SELECT i.id FROM image i JOIN hit h ON i.id=h.image_id WHERE h.task_tier = 0)").execute
 
 result.each do |row|
-	puts row.join
+	hit = createNewHIT(row[1])
+	db.prepare("INSERT INTO hit VALUES ('#{row[0]}', '0', '#{hit[:HITId]}')").execute
 end
-
-p(result)
-	
-#createNewHIT('www.test.com/test.jpg')
-
 
