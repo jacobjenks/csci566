@@ -21,31 +21,19 @@
 			<Selections>
 				<Selection>
 					<SelectionIdentifier>0</SelectionIdentifier>
-					<Text>Cereal grains, beans, peas, or legumes</Text>
+					<Text>Carrot</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>1</SelectionIdentifier>
-					<Text>Vegetables</Text>
+					<Text>Parsnip</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>2</SelectionIdentifier>
-					<Text>Fruits</Text>
+					<Text>Parsley</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>3</SelectionIdentifier>
-					<Text>Nuts or seeds</Text>
-				</Selection>
-				<Selection>
-					<SelectionIdentifier>4</SelectionIdentifier>
-					<Text>Spices and herbs</Text>
-				</Selection>
-				<Selection>
-					<SelectionIdentifier>5</SelectionIdentifier>
-					<Text>Tea</Text>
-				</Selection>
-				<Selection>
-					<SelectionIdentifier>6</SelectionIdentifier>
-					<Text>Hops</Text>
+					<Text>Other umbelliferous vegetable</Text>
 				</Selection>
 			</Selections>
 		  </SelectionAnswer>

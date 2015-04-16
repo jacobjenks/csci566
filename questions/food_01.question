@@ -21,31 +21,47 @@
 			<Selections>
 				<Selection>
 					<SelectionIdentifier>0</SelectionIdentifier>
-					<Text>Cereal grains, beans, peas, or legumes</Text>
+					<Text>Potatoes</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>1</SelectionIdentifier>
-					<Text>Vegetables</Text>
+					<Text>Sugar source</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>2</SelectionIdentifier>
-					<Text>Fruits</Text>
+					<Text>Cruciferous vegetables (radishes, cabbages, broccoli, sprouts and other roots)</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>3</SelectionIdentifier>
-					<Text>Nuts or seeds</Text>
+					<Text>Composite vegetables (artichoke, lettuce, chicory, other herbs)</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>4</SelectionIdentifier>
-					<Text>Spices and herbs</Text>
+					<Text>Liliaceous vegetables (onions, garlic, asparagus)</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>5</SelectionIdentifier>
-					<Text>Tea</Text>
+					<Text>Umbelliferous vegetables (carrots, celery, parsnip, other hollow-stem vegetables)</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>6</SelectionIdentifier>
-					<Text>Hops</Text>
+					<Text>Solanaceous vegetables (tomato, eggplant and sweet peppers)</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>7</SelectionIdentifier>
+					<Text>Cucurbitaceous vegetables (melons, pumpkins and cucumber)</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>8</SelectionIdentifier>
+					<Text>Legumes (peas and beans)</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>9</SelectionIdentifier>
+					<Text>Mushrooms</Text>
+				</Selection>
+				Selection>
+					<SelectionIdentifier>10</SelectionIdentifier>
+					<Text>Spinach, okra, ginger, or bamboo</Text>
 				</Selection>
 			</Selections>
 		  </SelectionAnswer>

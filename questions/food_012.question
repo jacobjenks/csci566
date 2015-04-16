@@ -21,31 +21,55 @@
 			<Selections>
 				<Selection>
 					<SelectionIdentifier>0</SelectionIdentifier>
-					<Text>Cereal grains, beans, peas, or legumes</Text>
+					<Text>Radish root</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>1</SelectionIdentifier>
-					<Text>Vegetables</Text>
+					<Text>Radish leaves</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>2</SelectionIdentifier>
-					<Text>Fruits</Text>
+					<Text>Turnip root</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>3</SelectionIdentifier>
-					<Text>Nuts or seeds</Text>
+					<Text>Turnip leaves</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>4</SelectionIdentifier>
-					<Text>Spices and herbs</Text>
+					<Text>Horseradish</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>5</SelectionIdentifier>
-					<Text>Tea</Text>
+					<Text>Watercress</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>6</SelectionIdentifier>
-					<Text>Hops</Text>
+					<Text>Cabbage</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>7</SelectionIdentifier>
+					<Text>Chinese cabbage</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>8</SelectionIdentifier>
+					<Text>Brussel sprouts</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>9</SelectionIdentifier>
+					<Text>Kale</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>10</SelectionIdentifier>
+					<Text>Cauliflower</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>11</SelectionIdentifier>
+					<Text>Broccoli</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>12</SelectionIdentifier>
+					<Text>Other cruciferous vegetables</Text>
 				</Selection>
 			</Selections>
 		  </SelectionAnswer>

@@ -14,6 +14,24 @@
 				<DataURL>$imageURL</DataURL>
 				<AltText>A picture of food.</AltText>
 			</Binary>
+			
+			<!--
+			<EmbeddedBinary>
+				<EmbeddedMimeType>
+					<Type>image</Type>
+					<SubType>gif</SubType>
+				</EmbeddedMimeType>
+				<DataURL>$imageURL</DataURL>
+				<AltText>A picture of food.</AltText>
+				<Width>400</Width>
+				<Height>300</Height>
+				<ApplicationParameter>
+					<Name>food<Name>
+					<Value>food</Value>
+				</ApplicationParameter>
+			</EmbeddedBinary>
+			-->
+			
 		</QuestionContent>
 		<AnswerSpecification>
 		  <SelectionAnswer>
@@ -21,31 +39,11 @@
 			<Selections>
 				<Selection>
 					<SelectionIdentifier>0</SelectionIdentifier>
-					<Text>Cereal grains, beans, peas, or legumes</Text>
+					<Text>Animal Source</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>1</SelectionIdentifier>
-					<Text>Vegetables</Text>
-				</Selection>
-				<Selection>
-					<SelectionIdentifier>2</SelectionIdentifier>
-					<Text>Fruits</Text>
-				</Selection>
-				<Selection>
-					<SelectionIdentifier>3</SelectionIdentifier>
-					<Text>Nuts or seeds</Text>
-				</Selection>
-				<Selection>
-					<SelectionIdentifier>4</SelectionIdentifier>
-					<Text>Spices and herbs</Text>
-				</Selection>
-				<Selection>
-					<SelectionIdentifier>5</SelectionIdentifier>
-					<Text>Tea</Text>
-				</Selection>
-				<Selection>
-					<SelectionIdentifier>6</SelectionIdentifier>
-					<Text>Hops</Text>
+					<Text>Plant Source</Text>
 				</Selection>
 			</Selections>
 		  </SelectionAnswer>
