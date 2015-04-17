@@ -21,19 +21,23 @@
 			<Selections>
 				<Selection>
 					<SelectionIdentifier>0</SelectionIdentifier>
-					<Text>Spinach</Text>
+					<Text>Beef</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>1</SelectionIdentifier>
-					<Text>Okra</Text>
+					<Text>Pork or ham</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>2</SelectionIdentifier>
-					<Text>Ginger</Text>
+					<Text>Poultry</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>3</SelectionIdentifier>
-					<Text>Bamboo shoots</Text>
+					<Text>Liver or kidney (any source)</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>4</SelectionIdentifier>
+					<Text>Cheese</Text>
 				</Selection>
 			</Selections>
 		  </SelectionAnswer>

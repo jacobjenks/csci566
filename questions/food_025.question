@@ -21,19 +21,43 @@
 			<Selections>
 				<Selection>
 					<SelectionIdentifier>0</SelectionIdentifier>
-					<Text>Spinach</Text>
+					<Text>Persimmon</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>1</SelectionIdentifier>
-					<Text>Okra</Text>
+					<Text>Banana</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>2</SelectionIdentifier>
-					<Text>Ginger</Text>
+					<Text>Kiwifruit</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>3</SelectionIdentifier>
-					<Text>Bamboo shoots</Text>
+					<Text>Papaya</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>4</SelectionIdentifier>
+					<Text>Avocado</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>5</SelectionIdentifier>
+					<Text>Pineapple</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>6</SelectionIdentifier>
+					<Text>Guava</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>7</SelectionIdentifier>
+					<Text>Mango</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>8</SelectionIdentifier>
+					<Text>Passion Fruit</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>9</SelectionIdentifier>
+					<Text>Other</Text>
 				</Selection>
 			</Selections>
 		  </SelectionAnswer>

@@ -21,19 +21,23 @@
 			<Selections>
 				<Selection>
 					<SelectionIdentifier>0</SelectionIdentifier>
-					<Text>Spinach</Text>
+					<Text>Peach</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>1</SelectionIdentifier>
-					<Text>Okra</Text>
+					<Text>Nectarine</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>2</SelectionIdentifier>
-					<Text>Ginger</Text>
+					<Text>Apricot</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>3</SelectionIdentifier>
-					<Text>Bamboo shoots</Text>
+					<Text>Plum</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>4</SelectionIdentifier>
+					<Text>Cherry</Text>
 				</Selection>
 			</Selections>
 		  </SelectionAnswer>
