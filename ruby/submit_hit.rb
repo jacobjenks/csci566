@@ -54,14 +54,14 @@ def getHITUrl( hitTypeId )
   end
 end
 
-db = SQLite3::Database.open base_directory+"db/food.db"
+db = SQLite3::Database.open base_directory+"db/food_dev.db"
 result = db.prepare("SELECT * FROM image WHERE id NOT IN(SELECT i.id FROM image i JOIN hit h ON i.id=h.image_id WHERE h.task_tier = 0)").execute
 
 i = 0
 result.each do |row|
 	i = i + 1
 	hit = createNewHIT(row[1])
-	db.prepare("INSERT INTO hit VALUES ('#{row[0]}', '0', '#{hit[:HITId]}')").execute
+	db.prepare("INSERT INTO hit (image_id, task_tier, hit_id) VALUES ('#{row[0]}', '0', '#{hit[:HITId]}')").execute
 end
 
 puts ""

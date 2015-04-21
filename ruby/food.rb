@@ -10,8 +10,8 @@ require 'sqlite3'
 # Use this line instead if you want the production website.
 #@mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Production
 
-base_directory = File.join(File.expand_path(File.dirname(__FILE__)), "../")
-db = SQLite3::Database.open base_directory+"db/food_dev.db"
+@base_directory = File.join(File.expand_path(File.dirname(__FILE__)), "../")
+@db = SQLite3::Database.open base_directory+"db/food_dev.db"
 
 #Make sure answers make sense
 #Response must have at least one answer, and no conflicting answers.
@@ -87,7 +87,7 @@ def createNewHIT(question, imageURL)
 	rewardAmount = 0.05 # 5 cents
 
 	# Define the location of the externalized question (QuestionForm) file.
-	questionFile = "questions/food_#{question}.question"
+	questionFile = @base_directory+"questions/food_#{question}.question"
 
 	# Load the question (QuestionForm) file
 	question = File.read( questionFile )
@@ -100,7 +100,7 @@ def createNewHIT(question, imageURL)
 	:Question => question,
 	:Keywords => keywords )
 
-	db.prepare("INSERT INTO hit (image_id, task_tier, hit_id) VALUES ('#{row[0]}', 'question', '#{hit[:HITId]}')").execute
+	@db.prepare("INSERT INTO hit (image_id, task_tier, hit_id) VALUES ('#{row[0]}', 'question', '#{hit[:HITId]}')").execute
 
 	puts "Created HIT: #{result[:HITId]}"
 	puts "HIT Location: #{getHITUrl( result[:HITTypeId] )}"
