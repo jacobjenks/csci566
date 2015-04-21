@@ -20,11 +20,15 @@
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
 				<Selection>
-					<SelectionIdentifier>0</SelectionIdentifier>
+					<SelectionIdentifier>103Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0130</SelectionIdentifier>
 					<Text>Liver</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>1</SelectionIdentifier>
+					<SelectionIdentifier>0131</SelectionIdentifier>
 					<Text>Kidney</Text>
 				</Selection>
 			</Selections>

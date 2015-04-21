@@ -20,19 +20,23 @@
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
 				<Selection>
-					<SelectionIdentifier>0</SelectionIdentifier>
+					<SelectionIdentifier>040Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0400</SelectionIdentifier>
 					<Text>Spice</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>1</SelectionIdentifier>
+					<SelectionIdentifier>0401</SelectionIdentifier>
 					<Text>Garlic garnish</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>2</SelectionIdentifier>
+					<SelectionIdentifier>0402</SelectionIdentifier>
 					<Text>Seed garnish</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>3</SelectionIdentifier>
+					<SelectionIdentifier>0403</SelectionIdentifier>
 					<Text>Chili pepper garnish</Text>
 				</Selection>
 			</Selections>

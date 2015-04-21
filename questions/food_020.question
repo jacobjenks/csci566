@@ -20,23 +20,27 @@
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
 				<Selection>
-					<SelectionIdentifier>0</SelectionIdentifier>
+					<SelectionIdentifier>020Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0200</SelectionIdentifier>
 					<Text>Orange</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>1</SelectionIdentifier>
+					<SelectionIdentifier>0201</SelectionIdentifier>
 					<Text>Lemon</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>2</SelectionIdentifier>
+					<SelectionIdentifier>0202</SelectionIdentifier>
 					<Text>Grapefruit</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>3</SelectionIdentifier>
+					<SelectionIdentifier>0203</SelectionIdentifier>
 					<Text>Lime</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>4</SelectionIdentifier>
+					<SelectionIdentifier>0204</SelectionIdentifier>
 					<Text>Other citrus fruit</Text>
 				</Selection>
 			</Selections>

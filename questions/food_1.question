@@ -20,19 +20,23 @@
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
 				<Selection>
-					<SelectionIdentifier>0</SelectionIdentifier>
+					<SelectionIdentifier>1Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>10</SelectionIdentifier>
 					<Text>Terrestrial Mammal</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>1</SelectionIdentifier>
+					<SelectionIdentifier>11</SelectionIdentifier>
 					<Text>Poultry</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>2</SelectionIdentifier>
+					<SelectionIdentifier>12</SelectionIdentifier>
 					<Text>Aquatic Animals</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>3</SelectionIdentifier>
+					<SelectionIdentifier>13</SelectionIdentifier>
 					<Text>Bee Products</Text>
 				</Selection>
 			</Selections>

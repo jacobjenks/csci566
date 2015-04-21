@@ -20,27 +20,31 @@
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
 				<Selection>
-					<SelectionIdentifier>0</SelectionIdentifier>
+					<SelectionIdentifier>017Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0170</SelectionIdentifier>
 					<Text>Cucumber (or pickle)</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>1</SelectionIdentifier>
+					<SelectionIdentifier>0171</SelectionIdentifier>
 					<Text>Pumpkin</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>2</SelectionIdentifier>
+					<SelectionIdentifier>0172</SelectionIdentifier>
 					<Text>Squash</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>3</SelectionIdentifier>
+					<SelectionIdentifier>0173</SelectionIdentifier>
 					<Text>Watermelon</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>4</SelectionIdentifier>
+					<SelectionIdentifier>0174</SelectionIdentifier>
 					<Text>Other melon</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>5</SelectionIdentifier>
+					<SelectionIdentifier>0175</SelectionIdentifier>
 					<Text>Other cucurbitaceous vegetable</Text>
 				</Selection>
 			</Selections>

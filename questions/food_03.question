@@ -20,11 +20,15 @@
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
 				<Selection>
-					<SelectionIdentifier>0</SelectionIdentifier>
+					<SelectionIdentifier>03Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>030</SelectionIdentifier>
 					<Text>Oil seeds (sunflower, chestnut, pecan, almond, or similar)</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>1</SelectionIdentifier>
+					<SelectionIdentifier>031</SelectionIdentifier>
 					<Text>Beverage seeds (coffee or cocoa)</Text>
 				</Selection>
 			</Selections>

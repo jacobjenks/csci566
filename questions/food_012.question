@@ -20,55 +20,47 @@
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
 				<Selection>
-					<SelectionIdentifier>0</SelectionIdentifier>
-					<Text>Radish root</Text>
+					<SelectionIdentifier>012Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>1</SelectionIdentifier>
-					<Text>Radish leaves</Text>
+					<SelectionIdentifier>0120</SelectionIdentifier>
+					<Text>Radish</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>2</SelectionIdentifier>
-					<Text>Turnip root</Text>
+					<SelectionIdentifier>0121</SelectionIdentifier>
+					<Text>Turnip</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>3</SelectionIdentifier>
-					<Text>Turnip leaves</Text>
-				</Selection>
-				<Selection>
-					<SelectionIdentifier>4</SelectionIdentifier>
+					<SelectionIdentifier>0122</SelectionIdentifier>
 					<Text>Horseradish</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>5</SelectionIdentifier>
+					<SelectionIdentifier>0123</SelectionIdentifier>
 					<Text>Watercress</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>6</SelectionIdentifier>
+					<SelectionIdentifier>0124</SelectionIdentifier>
 					<Text>Cabbage</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>7</SelectionIdentifier>
-					<Text>Chinese cabbage</Text>
-				</Selection>
-				<Selection>
-					<SelectionIdentifier>8</SelectionIdentifier>
+					<SelectionIdentifier>0125</SelectionIdentifier>
 					<Text>Brussel sprouts</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>9</SelectionIdentifier>
+					<SelectionIdentifier>0126</SelectionIdentifier>
 					<Text>Kale</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>10</SelectionIdentifier>
+					<SelectionIdentifier>0127</SelectionIdentifier>
 					<Text>Cauliflower</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>11</SelectionIdentifier>
+					<SelectionIdentifier>0128</SelectionIdentifier>
 					<Text>Broccoli</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>12</SelectionIdentifier>
+					<SelectionIdentifier>0129</SelectionIdentifier>
 					<Text>Other cruciferous vegetables</Text>
 				</Selection>
 			</Selections>

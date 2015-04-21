@@ -20,19 +20,23 @@
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
 				<Selection>
-					<SelectionIdentifier>0</SelectionIdentifier>
+					<SelectionIdentifier>102Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>1020</SelectionIdentifier>
 					<Text>Chicken or turkey - white</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>1</SelectionIdentifier>
+					<SelectionIdentifier>1021</SelectionIdentifier>
 					<Text>Chicken or turkey - dark</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>2</SelectionIdentifier>
+					<SelectionIdentifier>1022</SelectionIdentifier>
 					<Text>Chicken eggs</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>3</SelectionIdentifier>
+					<SelectionIdentifier>1023</SelectionIdentifier>
 					<Text>Other eggs</Text>
 				</Selection>
 			</Selections>

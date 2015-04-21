@@ -20,23 +20,27 @@
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
 				<Selection>
-					<SelectionIdentifier>0</SelectionIdentifier>
+					<SelectionIdentifier>001Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0010</SelectionIdentifier>
 					<Text>Soybeans</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>1</SelectionIdentifier>
+					<SelectionIdentifier>0011</SelectionIdentifier>
 					<Text>Beans or lentils</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>2</SelectionIdentifier>
+					<SelectionIdentifier>0012</SelectionIdentifier>
 					<Text>Peas</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>3</SelectionIdentifier>
+					<SelectionIdentifier>0013</SelectionIdentifier>
 					<Text>Peanuts</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>4</SelectionIdentifier>
+					<SelectionIdentifier>0014</SelectionIdentifier>
 					<Text>Other legumes</Text>
 				</Selection>
 			</Selections>

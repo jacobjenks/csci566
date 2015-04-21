@@ -20,27 +20,31 @@
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
 				<Selection>
-					<SelectionIdentifier>0</SelectionIdentifier>
+					<SelectionIdentifier>010Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0100</SelectionIdentifier>
 					<Text>Potato</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>1</SelectionIdentifier>
+					<SelectionIdentifier>0101</SelectionIdentifier>
 					<Text>Sweet potato</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>2</SelectionIdentifier>
+					<SelectionIdentifier>0102</SelectionIdentifier>
 					<Text>Taro</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>3</SelectionIdentifier>
+					<SelectionIdentifier>0103</SelectionIdentifier>
 					<Text>Yam</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>4</SelectionIdentifier>
+					<SelectionIdentifier>0104</SelectionIdentifier>
 					<Text>Konjac (Elephant yam)</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>5</SelectionIdentifier>
+					<SelectionIdentifier>0105</SelectionIdentifier>
 					<Text>Unknown potato</Text>
 				</Selection>
 			</Selections>

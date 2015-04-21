@@ -1,13 +1,8 @@
 #!/usr/bin/env ruby
 
-# This sample application creates a simple HIT using Libraries for Amazon Web Services.
-# Example taken from http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMechanicalTurkGettingStartedGuide/CreatingAHIT.html#Ruby
-#
-
+require 'rubygems'
+require 'bundler/setup'
 require 'mturk'
-require 'sqlite3'
-
-base_directory = File.join(File.expand_path(File.dirname(__FILE__)), "../")
 
 @mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Sandbox
 
@@ -15,50 +10,65 @@ base_directory = File.join(File.expand_path(File.dirname(__FILE__)), "../")
 #@mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Production
 
 
-
-
-def createNewHIT(imageURL)
-  title = "Food Classification"
-  desc = "The purpose of this task is to determine the types of food contained within the given image"
-  keywords = "food, classification"
-  numAssignments = 5
-  rewardAmount = 0.05 # 5 cents
-  
-  # Define the location of the externalized question (QuestionForm) file.
-  #rootDir = File.dirname $0
-  #questionFile = rootDir + "../questions/food_1.question"
-  questionFile = "questions/food_1.question"
-
-  # Load the question (QuestionForm) file
-  question = File.read( questionFile )
-  question = question.gsub(/\$imageURL/, imageURL)
-  
-  result = @mturk.createHIT( :Title => title,
-    :Description => desc,
-    :MaxAssignments => numAssignments,
-    :Reward => { :Amount => rewardAmount, :CurrencyCode => 'USD' },
-    :Question => question,
-    :Keywords => keywords )
-
-  puts "Created HIT: #{result[:HITId]}"
-  puts "HIT Location: #{getHITUrl( result[:HITTypeId] )}"
-  
-  return result
+#Make sure answers make sense
+#Response must have at least one answer, and no conflicting answers.
+#@param answer: a simplified answer
+#@return: true for valid answer false for invalid answer	
+def validateAnswer(answers)
+	result = true
+	if(answers.length == 0)#require an answer
+		return false
+	end
+	
+	answers.each do |answer|
+		if(/Q|q/ =~ answer && answers.length > 1)#Invalid response, since this indicates them rejecting category and then choosing from it
+			result = false
+		end
+	end
+	
+	return result
 end
 
-def getHITUrl( hitTypeId )
-  if @mturk.host =~ /sandbox/
-    "http://workersandbox.mturk.com/mturk/preview?groupId=#{hitTypeId}"   # Sandbox Url
-  else
-    "http://mturk.com/mturk/preview?groupId=#{hitTypeId}"   # Production Url
-  end
+#Get hits awaiting review, and approve or reject answers
+def processReviewableHits
+	puts "--Processing reviewable HITs--"
+	approved = 0
+	reject = 0
+	#Get reviewable hits
+	reviewable = @mturk.getReviewableHITs()
+
+	#Get assignments awaiting approval, and validate
+	reviewable[:HIT].each do |hit|
+		#get responses
+		answers = @mturk.getAssignmentsForHIT(:HITId => hit[:HITId])
+		
+		if(answers[:NumResults] > 0)
+			#validate each response in hit
+			answers[:Assignment].each do |assign|
+				if(assign[:AssignmentStatus]=='Submitted')
+					if(validateAnswer(@mturk.simplifyAnswer(assign[:Answer])))
+						@mturk.approveAssignment(:AssignmentId => assign[:AssignmentId], :RequesterFeedback => "Thanks!")#Approve
+						approved += 1
+					else
+						@mturk.rejectAssignment(:AssignmentId =>  assign[:AssignmentId], :RequesterFeedback => "Your answer was invalid or had conflicts.")#Reject
+						reject += 1
+					end
+				end
+			end
+		end
+	end
+	puts "     Approved: " + approved.to_s
+	puts "     Rejected: " + reject.to_s
 end
 
-db = SQLite3::Database.open base_directory+"db/food.db"
-result = db.prepare("SELECT * FROM image WHERE id NOT IN(SELECT i.id FROM image i JOIN hit h ON i.id=h.image_id WHERE h.task_tier = 0)").execute
 
-result.each do |row|
-	hit = createNewHIT(row[1])
-	db.prepare("INSERT INTO hit VALUES ('#{row[0]}', '0', '#{hit[:HITId]}')").execute
+#Get reviewable hits, and force expire early if consensus has been reached
+def earlyExpire
+	reviewable = @mturk.getReviewableHITs()
 end
 
+################ Main ################
+processReviewableHits()
+#earlyExpire()
+
+#puts @mturk.getReviewableHITs(:status => "Unassignable")

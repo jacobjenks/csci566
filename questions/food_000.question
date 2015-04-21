@@ -20,31 +20,35 @@
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
 				<Selection>
-					<SelectionIdentifier>0</SelectionIdentifier>
+					<SelectionIdentifier>000Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0000</SelectionIdentifier>
 					<Text>Rice</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>1</SelectionIdentifier>
+					<SelectionIdentifier>0001</SelectionIdentifier>
 					<Text>Wheat</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>2</SelectionIdentifier>
+					<SelectionIdentifier>0002</SelectionIdentifier>
 					<Text>Barley</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>3</SelectionIdentifier>
+					<SelectionIdentifier>0003</SelectionIdentifier>
 					<Text>Rye</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>4</SelectionIdentifier>
+					<SelectionIdentifier>0004</SelectionIdentifier>
 					<Text>Corn</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>5</SelectionIdentifier>
+					<SelectionIdentifier>0005</SelectionIdentifier>
 					<Text>Buckwheat</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>6</SelectionIdentifier>
+					<SelectionIdentifier>0006</SelectionIdentifier>
 					<Text>Other cereal grain</Text>
 				</Selection>
 			</Selections>

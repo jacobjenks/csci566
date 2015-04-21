@@ -20,20 +20,28 @@
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
 				<Selection>
-					<SelectionIdentifier>0</SelectionIdentifier>
+					<SelectionIdentifier>019Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0190</SelectionIdentifier>
 					<Text>Spinach</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>1</SelectionIdentifier>
+					<SelectionIdentifier>0191</SelectionIdentifier>
 					<Text>Okra</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>2</SelectionIdentifier>
+					<SelectionIdentifier>0192</SelectionIdentifier>
 					<Text>Ginger</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>3</SelectionIdentifier>
+					<SelectionIdentifier>0193</SelectionIdentifier>
 					<Text>Bamboo shoots</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0194</SelectionIdentifier>
+					<Text>Other vegetables</Text>
 				</Selection>
 			</Selections>
 		  </SelectionAnswer>

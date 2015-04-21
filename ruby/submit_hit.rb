@@ -4,6 +4,8 @@
 # Example taken from http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMechanicalTurkGettingStartedGuide/CreatingAHIT.html#Ruby
 #
 
+require 'rubygems'
+require 'bundler/setup'
 require 'mturk'
 require 'sqlite3'
 

@@ -20,31 +20,35 @@
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
 				<Selection>
-					<SelectionIdentifier>0</SelectionIdentifier>
+					<SelectionIdentifier>023Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0230</SelectionIdentifier>
 					<Text>Strawberry</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>1</SelectionIdentifier>
+					<SelectionIdentifier>0231</SelectionIdentifier>
 					<Text>Raspberry</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>2</SelectionIdentifier>
+					<SelectionIdentifier>0232</SelectionIdentifier>
 					<Text>Blackberry</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>3</SelectionIdentifier>
+					<SelectionIdentifier>0233</SelectionIdentifier>
 					<Text>Blueberry</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>4</SelectionIdentifier>
+					<SelectionIdentifier>0234</SelectionIdentifier>
 					<Text>Cranberry</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>5</SelectionIdentifier>
+					<SelectionIdentifier>0235</SelectionIdentifier>
 					<Text>Huckleberry</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>6</SelectionIdentifier>
+					<SelectionIdentifier>0236</SelectionIdentifier>
 					<Text>Other berry</Text>
 				</Selection>
 			</Selections>

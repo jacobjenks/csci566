@@ -14,29 +14,15 @@
 				<DataURL>$imageURL</DataURL>
 				<AltText>A picture of food.</AltText>
 			</Binary>
-			
-			<!--
-			<EmbeddedBinary>
-				<EmbeddedMimeType>
-					<Type>image</Type>
-					<SubType>gif</SubType>
-				</EmbeddedMimeType>
-				<DataURL>$imageURL</DataURL>
-				<AltText>A picture of food.</AltText>
-				<Width>400</Width>
-				<Height>300</Height>
-				<ApplicationParameter>
-					<Name>food<Name>
-					<Value>food</Value>
-				</ApplicationParameter>
-			</EmbeddedBinary>
-			-->
-			
 		</QuestionContent>
 		<AnswerSpecification>
 		  <SelectionAnswer>
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
+				<Selection>
+					<SelectionIdentifier>-1</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
 				<Selection>
 					<SelectionIdentifier>0</SelectionIdentifier>
 					<Text>Animal Source</Text>

@@ -20,27 +20,31 @@
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
 				<Selection>
-					<SelectionIdentifier>0</SelectionIdentifier>
+					<SelectionIdentifier>02Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>020</SelectionIdentifier>
 					<Text>Citrus fruits</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>1</SelectionIdentifier>
+					<SelectionIdentifier>021</SelectionIdentifier>
 					<Text>Pome fruits (apples or pears)</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>2</SelectionIdentifier>
+					<SelectionIdentifier>022</SelectionIdentifier>
 					<Text>Stone fruits (peaches, apricots, plums, or cherries)</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>3</SelectionIdentifier>
+					<SelectionIdentifier>023</SelectionIdentifier>
 					<Text>Berries</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>4</SelectionIdentifier>
+					<SelectionIdentifier>024</SelectionIdentifier>
 					<Text>Grape</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>5</SelectionIdentifier>
+					<SelectionIdentifier>025</SelectionIdentifier>
 					<Text>Other tropical/subtropical fruit</Text>
 				</Selection>
 			</Selections>

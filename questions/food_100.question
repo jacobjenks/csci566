@@ -20,15 +20,19 @@
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
 				<Selection>
-					<SelectionIdentifier>0</SelectionIdentifier>
+					<SelectionIdentifier>100Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>1000</SelectionIdentifier>
 					<Text>Steak, filet, or roast</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>1</SelectionIdentifier>
+					<SelectionIdentifier>1001</SelectionIdentifier>
 					<Text>Ground beef or burger</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>2</SelectionIdentifier>
+					<SelectionIdentifier>1002</SelectionIdentifier>
 					<Text>Dried beef</Text>
 				</Selection>
 			</Selections>

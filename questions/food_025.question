@@ -20,43 +20,47 @@
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
 				<Selection>
-					<SelectionIdentifier>0</SelectionIdentifier>
+					<SelectionIdentifier>025Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0250</SelectionIdentifier>
 					<Text>Persimmon</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>1</SelectionIdentifier>
+					<SelectionIdentifier>0251</SelectionIdentifier>
 					<Text>Banana</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>2</SelectionIdentifier>
+					<SelectionIdentifier>0252</SelectionIdentifier>
 					<Text>Kiwifruit</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>3</SelectionIdentifier>
+					<SelectionIdentifier>0253</SelectionIdentifier>
 					<Text>Papaya</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>4</SelectionIdentifier>
+					<SelectionIdentifier>0254</SelectionIdentifier>
 					<Text>Avocado</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>5</SelectionIdentifier>
+					<SelectionIdentifier>0255</SelectionIdentifier>
 					<Text>Pineapple</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>6</SelectionIdentifier>
+					<SelectionIdentifier>0256</SelectionIdentifier>
 					<Text>Guava</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>7</SelectionIdentifier>
+					<SelectionIdentifier>0257</SelectionIdentifier>
 					<Text>Mango</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>8</SelectionIdentifier>
+					<SelectionIdentifier>0258</SelectionIdentifier>
 					<Text>Passion Fruit</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>9</SelectionIdentifier>
+					<SelectionIdentifier>0259</SelectionIdentifier>
 					<Text>Other</Text>
 				</Selection>
 			</Selections>
