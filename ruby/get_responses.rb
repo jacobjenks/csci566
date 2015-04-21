@@ -67,8 +67,17 @@ def earlyExpire
 	reviewable = @mturk.getReviewableHITs()
 end
 
+#get all hits and their status
+def getHITs
+	hits = @mturk.searchHITsAll.collect{|hit| hit[:HITId] }
+	result = Array.new
+	hits.each do |id|
+		puts @mturk.getHIT(HITId => id)
+	end
+end
 ################ Main ################
-processReviewableHits()
+#processReviewableHits()
 #earlyExpire()
 
-#puts @mturk.getReviewableHITs(:status => "Unassignable")
+#puts @mturk.searchHITsAll.collect{|hit| hit[:HITId] }.length
+getHits
