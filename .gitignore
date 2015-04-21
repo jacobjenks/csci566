@@ -1,3 +1,4 @@
 *.log
+
 *.db
 aws_keys*
