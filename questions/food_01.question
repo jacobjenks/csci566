@@ -33,7 +33,7 @@
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>012</SelectionIdentifier>
-					<Text>Cruciferous vegetables (radishes, cabbages, broccoli, sprouts and other roots)</Text>
+					<Text>Cruciferous vegetables (radishes, cabbages, broccoli, brussels sprouts and other roots)</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>013</SelectionIdentifier>
@@ -59,7 +59,7 @@
 					<SelectionIdentifier>018</SelectionIdentifier>
 					<Text>Mushrooms</Text>
 				</Selection>
-				Selection>
+				<Selection>
 					<SelectionIdentifier>019</SelectionIdentifier>
 					<Text>Spinach, okra, ginger, bamboo, or other vegetables</Text>
 				</Selection>

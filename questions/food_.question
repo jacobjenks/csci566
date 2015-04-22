@@ -25,11 +25,11 @@
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>0</SelectionIdentifier>
-					<Text>Animal Source</Text>
+					<Text>Animal</Text>
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>1</SelectionIdentifier>
-					<Text>Plant Source</Text>
+					<Text>Plant</Text>
 				</Selection>
 			</Selections>
 		  </SelectionAnswer>

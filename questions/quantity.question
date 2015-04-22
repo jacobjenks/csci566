@@ -5,7 +5,9 @@
 		<DisplayName>Food Source</DisplayName>
 		<IsRequired>true</IsRequired>
 		<QuestionContent>
-			<Text>Estimate the quantity (in grams) of the $food contained within the image below.</Text>
+			<IsRequired>true</IsRequired>
+			<QuestionIdentifier>$qId</QuestionIdentifier>
+			<Text>Estimate the quantity (in grams) of the $food food sources contained within the image below.</Text>
 			<Binary>
 				<MimeType>
 					<Type>image</Type>
@@ -16,11 +18,11 @@
 			</Binary>
 		</QuestionContent>
 		<AnswerSpecification>
-		  <FreeTextAnswer>
-			<Constraints>
-				<AnswerFormatRegex regex="[0-9]{0,5}.?[0-9]{0,2}" errorText="Please enter the quantity (in grams) of the food specified above."/>
-			</Constraints>
-		  </FreeTextAnswer>
+			<FreeTextAnswer>
+				<Constraints>
+					<IsNumeric minValue="0" maxValue="2000"/>
+				</Constraints>
+			</FreeTextAnswer>
 		</AnswerSpecification>
 	</Question>
 </QuestionForm>
