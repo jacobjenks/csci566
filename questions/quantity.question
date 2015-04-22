@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuestionForm xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd">
 	<Question>
-		<QuestionIdentifier>1</QuestionIdentifier>
+		<QuestionIdentifier>$qId</QuestionIdentifier>
 		<DisplayName>Food Source</DisplayName>
 		<IsRequired>true</IsRequired>
 		<QuestionContent>
-			<IsRequired>true</IsRequired>
-			<QuestionIdentifier>$qId</QuestionIdentifier>
-			<Text>Estimate the quantity (in grams) of the $food food sources contained within the image below.</Text>
+			<Text>Estimate the quantity (in grams) of the <i>$food</i> food sources contained within the image below.</Text>
 			<Binary>
 				<MimeType>
 					<Type>image</Type>

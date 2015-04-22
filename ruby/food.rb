@@ -120,7 +120,7 @@ def createNewHIT(questionId, imageId, imageURL)
 		foodQ = File.read(@base_directory+"questions/food_"+questionId.slice(0,questionId.length-1)+".question")
 		food = /<SelectionIdentifier>#{questionId}<\/SelectionIdentifier>[\r\n\t]*<Text>([a-zA-Z,. ]*)<\/Text>/.match(foodQ)[1].downcase
 		question = question.gsub(/\$food/, food)
-		quesiton = question.gsub(/\$qId/, questionId+"Q")
+		question = question.gsub(/\$qId/, questionId.to_s+"Q")
 	else
 		questionFile = @base_directory+"questions/food_#{questionId}.question"
 		question = File.read(questionFile)
@@ -128,12 +128,17 @@ def createNewHIT(questionId, imageId, imageURL)
 
 	question = question.gsub(/\$imageURL/, imageURL)
 
-	result = @mturk.createHIT( :Title => title,
-	:Description => desc,
-	:MaxAssignments => numAssignments,
-	:Reward => { :Amount => rewardAmount, :CurrencyCode => 'USD' },
-	:Question => question,
-	:Keywords => keywords )
+	begin
+		result = @mturk.createHIT( :Title => title,
+		:Description => desc,
+		:MaxAssignments => numAssignments,
+		:Reward => { :Amount => rewardAmount, :CurrencyCode => 'USD' },
+		:Question => question,
+		:Keywords => keywords )
+	rescue
+		puts "     Error parsing "+questionFile
+		exit
+	end
 
 	@db.execute("INSERT INTO hit (image_id, task_tier, hit_id) VALUES ('#{imageId}', '#{questionId}', '#{result[:HITId]}')")
 
@@ -158,6 +163,7 @@ def genTasks
 	result = @db.prepare("SELECT id, url FROM image WHERE id NOT IN(SELECT image_id FROM hit)").execute
 
 	i = 0
+	finished = 0
 	result.each do |row|
 		i += 1
 		createNewHIT('', row[0], row[1])
@@ -176,19 +182,19 @@ def genTasks
 		
 		if(answers.length > 0)
 			#Handle quantity and class questions differently
-			if(/<QuestionIdentifier>[0-9]*[Q|q]<\/QuestionIdentifier>/ =~ answers[0][:Answer])#Quantity question
+			if(/<QuestionIdentifier>[0-9]*[Q|q]<\/QuestionIdentifier>/ =~ answers[0][:Assignment][:Answer])#Quantity question
 				if(answers.length == hitDetail[:MaxAssignments].to_i)#All questions must be answered for quantity
-					@db.execute("UPDATE hit SET complete=1 WHERE hit_id='#{hit}'")
-					
 					#get average quantity estimate
 					avg = 0
 					answers.each do |answer|
-						avg += /<FreeText>([0-9.]*)<\/FreeText>/.match(answer[:Answer])[1].to_f
+						avg += /<FreeText>([0-9.]*)<\/FreeText>/.match(answer[:Assignment][:Answer])[1].to_f
 					end
 					avg /= answers.length
 					
-					question = /<QuestionIdentifier>([0-9]*)[Q|q]<\/QuestionIdentifier>/.match(answers[0][:Answer])[1]
+					question = /<QuestionIdentifier>([0-9]*)[Q|q]<\/QuestionIdentifier>/.match(answers[0][:Assignment][:Answer])[1]
 					@db.execute("INSERT INTO food VALUES('#{image[0]}', '#{question}', '#{avg}')")#store answer in DB for easy retrieval
+					@db.execute("UPDATE hit SET complete=1 WHERE hit_id='#{hit}'")
+					finished += 1
 				end
 			else#Class question
 				consensus = Hash.new
@@ -235,6 +241,7 @@ def genTasks
 	end
 	
 	puts "     Created #{i} hits"
+	puts "     Finished #{finished} hits"
 end
 
 ################ Main ################
