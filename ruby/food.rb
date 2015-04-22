@@ -113,11 +113,19 @@ def createNewHIT(questionId, imageId, imageURL)
 	numAssignments = 1
 	rewardAmount = 0.01
 
-	# Define the location of the externalized question (QuestionForm) file.
-	questionFile = @base_directory+"questions/food_#{questionId}.question"
+	#Quantity questions contain the question ID + Q
+	if(/Q|q/ =~ questionId)
+		questionFile = @base_directory+"questions/quantity.question"
+		question = File.read(questionFile)
+		foodQ = File.read(@base_directory+"questions/food_questionId.question")
+		food = /<SelectionIdentifier>#{questionId}<\/SelectionIdentifier>[\r\n\t]*<Text>([a-zA-Z,. ]*)<\/Text>/.match(foodQ)
+		puts food
+		exit
+	else
+		questionFile = @base_directory+"questions/food_#{questionId}.question"
+		question = File.read(questionFile)
+	end
 
-	# Load the question (QuestionForm) file
-	question = File.read(questionFile)
 	question = question.gsub(/\$imageURL/, imageURL)
 
 	result = @mturk.createHIT( :Title => title,
@@ -208,5 +216,6 @@ def genTasks
 end
 
 ################ Main ################
-processReviewableHits
-genTasks
+#processReviewableHits
+#genTasks
+createNewHIT('0Q', '1', 'http://farm4.static.flickr.com/3094/3108517899_1a9ebaede7.jpg')
