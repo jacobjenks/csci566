@@ -29,14 +29,10 @@
 				</Selection>
 				<Selection>
 					<SelectionIdentifier>11</SelectionIdentifier>
-					<Text>Poultry</Text>
-				</Selection>
-				<Selection>
-					<SelectionIdentifier>12</SelectionIdentifier>
 					<Text>Aquatic Animals</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>13</SelectionIdentifier>
+					<SelectionIdentifier>12</SelectionIdentifier>
 					<Text>Bee Products</Text>
 				</Selection>
 			</Selections>

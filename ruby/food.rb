@@ -92,6 +92,7 @@ def getAnswers(hit, status="")
 	result = Array.new
 	if(answers[:NumResults] == 1)
 		if(status=="" || answers[:Assignment][:AssignmentStatus]==status)
+			answers[:Answer] = answers[:Assignment][:Answer]
 			result << answers
 		end
 	elsif(answers[:NumResults] > 1)
@@ -109,7 +110,7 @@ def createNewHIT(questionId, imageId, imageURL)
 	title = "Food Classification"
 	desc = "The purpose of this task is to determine the types of food contained within the given image."
 	keywords = "food, classification"
-	numAssignments = 1
+	numAssignments = 3
 	rewardAmount = 0.01
 
 	#Quantity questions contain the question ID + Q, or are asked at the bottom of the tree
@@ -118,7 +119,7 @@ def createNewHIT(questionId, imageId, imageURL)
 		questionFile = @base_directory+"questions/quantity.question"
 		question = File.read(questionFile)
 		foodQ = File.read(@base_directory+"questions/food_"+questionId.slice(0,questionId.length-1)+".question")
-		food = /<SelectionIdentifier>#{questionId}<\/SelectionIdentifier>[\r\n\t]*<Text>([a-zA-Z,. ]*)<\/Text>/.match(foodQ)[1].downcase
+		food = /<SelectionIdentifier>#{questionId}<\/SelectionIdentifier>[\r\n\t\s]*<Text>([a-zA-Z,. ()]*)<\/Text>/.match(foodQ)[1].downcase
 		question = question.gsub(/\$food/, food)
 		question = question.gsub(/\$qId/, questionId.to_s+"Q")
 	else
@@ -182,24 +183,28 @@ def genTasks
 		
 		if(answers.length > 0)
 			#Handle quantity and class questions differently
-			if(/<QuestionIdentifier>[0-9]*[Q|q]<\/QuestionIdentifier>/ =~ answers[0][:Assignment][:Answer])#Quantity question
+			if(/<QuestionIdentifier>[0-9]*[Q|q]<\/QuestionIdentifier>/ =~ answers[0][:Answer])#Quantity question
 				if(answers.length == hitDetail[:MaxAssignments].to_i)#All questions must be answered for quantity
 					#get average quantity estimate
 					avg = 0
 					answers.each do |answer|
-						avg += /<FreeText>([0-9.]*)<\/FreeText>/.match(answer[:Assignment][:Answer])[1].to_f
+						avg += /<FreeText>([0-9.]*)<\/FreeText>/.match(answer[:Answer])[1].to_f
 					end
 					avg /= answers.length
 					
-					question = /<QuestionIdentifier>([0-9]*)[Q|q]<\/QuestionIdentifier>/.match(answers[0][:Assignment][:Answer])[1]
-					@db.execute("INSERT INTO food VALUES('#{image[0]}', '#{question}', '#{avg}')")#store answer in DB for easy retrieval
+					question = /<QuestionIdentifier>([0-9]*)[Q|q]<\/QuestionIdentifier>/.match(answers[0][:Answer])[1]
+					begin
+						@db.execute("INSERT INTO food VALUES('#{image[0]}', '#{question}', '#{avg}')")#store answer in DB for easy retrieval
+					rescue
+						puts "Duplicate detected. You done screwed up."
+					end
 					@db.execute("UPDATE hit SET complete=1 WHERE hit_id='#{hit}'")
 					finished += 1
 				end
 			else#Class question
 				consensus = Hash.new
 				answers.each do |a|
-					@mturk.simplifyAnswer(a[:Assignment][:Answer]).each do |key, row|
+					@mturk.simplifyAnswer(a[:Answer]).each do |key, row|
 						if(!row.kind_of?(Array))#stupid formatting stuff again
 							row = [row]
 						end
@@ -223,6 +228,7 @@ def genTasks
 				
 				#Gen new hits if we have majority or if all questions have been answered
 				if(majority || answers.length == hitDetail[:MaxAssignments].to_i)
+					decided = false#Have the masses decided what this is yet?
 					if(majority)#quit early if we already have a majority vote
 						@mturk.forceExpireHIT(:HITId => hit)
 					end
@@ -230,10 +236,20 @@ def genTasks
 					#generate new hits
 					consensus.each do |key, c|
 						if(c > hitDetail[:MaxAssignments].to_i/2)
+							decided = true
 							i+=1
 							createNewHIT(key, image[0], image[1])
 						end
 					end
+					
+					#go up a tier and ask for quantity if no consensus was reached
+					if(!decided)
+						i+=1
+						newQ = @mturk.simplifyAnswer(answers[0][:Answer]).values
+						newQ = newQ[0].to_s[0,newQ[0].to_s.length-1]+"Q"
+						createNewHIT(newQ,image[0], image[1])
+					end
+					
 					@db.execute("UPDATE hit SET complete=1 WHERE hit_id='#{hit}'")
 				end
 			end

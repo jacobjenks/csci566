@@ -5,7 +5,7 @@
 		<DisplayName>Food Source</DisplayName>
 		<IsRequired>true</IsRequired>
 		<QuestionContent>
-			<Text>Estimate the quantity (in grams) of the <i>$food</i> food sources contained within the image below.</Text>
+			<Text>Estimate the quantity (in grams) of the $food food sources contained within the image below.</Text>
 			<Binary>
 				<MimeType>
 					<Type>image</Type>
