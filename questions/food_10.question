@@ -20,27 +20,27 @@
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
 				<Selection>
-					<SelectionIdentifier>01Q</SelectionIdentifier>
+					<SelectionIdentifier>10Q</SelectionIdentifier>
 					<Text>The image does not contain any of the food sources listed below</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>010</SelectionIdentifier>
+					<SelectionIdentifier>100</SelectionIdentifier>
 					<Text>Beef</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>011</SelectionIdentifier>
+					<SelectionIdentifier>101</SelectionIdentifier>
 					<Text>Pork or ham</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>012</SelectionIdentifier>
+					<SelectionIdentifier>102</SelectionIdentifier>
 					<Text>Poultry</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>013</SelectionIdentifier>
+					<SelectionIdentifier>103</SelectionIdentifier>
 					<Text>Liver or kidney (any source)</Text>
 				</Selection>
 				<Selection>
-					<SelectionIdentifier>014</SelectionIdentifier>
+					<SelectionIdentifier>104</SelectionIdentifier>
 					<Text>Cheese</Text>
 				</Selection>
 			</Selections>
