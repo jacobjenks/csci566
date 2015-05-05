@@ -276,7 +276,6 @@ case ARGV[0]
 	when "getHITs"
 		puts getHITs
 	when "getHIT"
-		puts getHIT(ARGV[1])
 		begin
 			puts getHIT(ARGV[1])
 		rescue
