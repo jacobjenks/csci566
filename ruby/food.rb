@@ -215,7 +215,11 @@ def genTasks
 						end
 						index = ""
 						row.each do |actualAnswer|
-							index = index + actualAnswer.to_s
+							if(index=="")
+								index = actualAnswer.to_s
+							else
+								index = index +","+actualAnswer.to_s
+							end
 						end
 						
 						if(consensus.has_key?(index))
@@ -245,8 +249,10 @@ def genTasks
 					consensus.each do |key, c|
 						if(c > hitDetail[:MaxAssignments].to_i/2)
 							decided = true
-							i+=1
-							createNewHIT(key, image[0], image[1])
+							key.split(",").each do |q|
+								i+=1
+								createNewHIT(q, image[0], image[1])
+							end
 						end
 					end
 					
