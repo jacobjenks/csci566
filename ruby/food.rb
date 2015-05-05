@@ -273,8 +273,6 @@ end
 ################ Main ################
 
 case ARGV[0]
-	when "" || "autoupdate"
-		autoUpdate
 	when "getHITs"
 		puts getHITs
 	when "getHIT"
@@ -285,6 +283,6 @@ case ARGV[0]
 			puts "Not enough arguments"
 		end
 	else
-		puts "Command not recognized"
+		autoUpdate
 end
 			
