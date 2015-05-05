@@ -6,14 +6,15 @@ require 'mturk'
 require 'sqlite3'
 
 #################### Variables ##########################
-@mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Sandbox
+#@mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Sandbox
 
 # Use this line instead if you want the production website.
-#@mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Production
+@mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Production
 
 @base_directory = File.expand_path(File.dirname(__FILE__))
 @base_directory = @base_directory.gsub(/ruby/, "")
-@db = SQLite3::Database.open @base_directory+"db/food_dev.db"
+#@db = SQLite3::Database.open @base_directory+"db/food_dev.db"
+@db = SQLite3::Database.open @base_directory+"db/food.db"
 
 #################### Functions ###########################
 
@@ -82,7 +83,7 @@ def getHITs(status="")
 			result[id] = hit
 		end
 	end
-	puts result
+	return hits
 end
 
 #Get HIT answers
@@ -110,8 +111,8 @@ def createNewHIT(questionId, imageId, imageURL)
 	title = "Food Classification"
 	desc = "The purpose of this task is to determine the types of food contained within the given image."
 	keywords = "food, classification"
-	numAssignments = 3
-	rewardAmount = 0.01
+	numAssignments = 7
+	rewardAmount = 0.02
 
 	#Quantity questions contain the question ID + Q, or are asked at the bottom of the tree
 	if(/Q|q/ =~ questionId || !File.exist?(@base_directory+"questions/food_#{questionId}.question"))
@@ -260,6 +261,22 @@ def genTasks
 	puts "     Finished #{finished} hits"
 end
 
+def autoUpdate
+	processReviewableHits
+	genTasks
+end
+
 ################ Main ################
-processReviewableHits
-genTasks
+
+case ARGV[0]
+	when "" || "autoupdate"
+		autoUpdate
+	when "getHITs"
+		puts getHITs
+	when getHIT
+		if(ARGV[1].present)
+			puts getHIT(ARGV[1])
+	else
+		puts "Command not recognized"
+end
+			
