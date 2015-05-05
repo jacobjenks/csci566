@@ -72,6 +72,10 @@ def processReviewableHits
 	puts "     Rejected: " + reject.to_s
 end
 
+def getHIT(id)
+	return @mturk.getHIT(:HITId => id)
+end
+
 #get all hits and their status
 #@param status: Filter by HITs with the given status. Options are 'Assignable', 'Unassignable', 'Reviewable', 'Reviewing', and 'Disposed'
 def getHITs(status="")
@@ -274,8 +278,11 @@ case ARGV[0]
 	when "getHITs"
 		puts getHITs
 	when "getHIT"
-		if(ARGV[1].present)
+		puts getHIT(ARGV[1])
+		begin
 			puts getHIT(ARGV[1])
+		rescue
+			puts "Not enough arguments"
 		end
 	else
 		puts "Command not recognized"
