@@ -273,7 +273,7 @@ case ARGV[0]
 		autoUpdate
 	when "getHITs"
 		puts getHITs
-	when getHIT
+	when "getHIT"
 		if(ARGV[1].present)
 			puts getHIT(ARGV[1])
 		end
