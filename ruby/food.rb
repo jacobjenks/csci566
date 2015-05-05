@@ -279,6 +279,37 @@ def autoUpdate
 	genTasks
 end
 
+def getWorkerResponses
+	hits = getHITs
+	workers = Hash.new
+	hits.each do |hit|
+		answers = getAnswers(hit, "Approved")
+		answers.each do |a|
+			@mturk.simplifyAnswer(a[:Answer]).each do |key, row|
+				if(!row.kind_of?(Array))#stupid formatting stuff again
+					row = [row]
+				end
+				index = ""
+				row.each do |actualAnswer|
+					if(index=="")
+						index = actualAnswer.to_s
+					else
+						index = index +","+actualAnswer.to_s
+					end
+				end
+				
+				if(workers.has_key?(a[:WorkerId]))
+					workers[a[:WorkerId]] << index
+				else
+					workers[a[:WorkerId]] = Array.new
+					workers[a[:WorkerId]] << index
+				end
+			end
+		end
+	end
+	return workers
+end
+
 ################ Main ################
 
 case ARGV[0]
@@ -290,6 +321,8 @@ case ARGV[0]
 		rescue
 			puts "Not enough arguments"
 		end
+	when "getWorkerResponses"
+		puts getWorkerResponses
 	when "test"
 		puts ""
 	else
