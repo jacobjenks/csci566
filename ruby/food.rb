@@ -213,12 +213,15 @@ def genTasks
 						if(!row.kind_of?(Array))#stupid formatting stuff again
 							row = [row]
 						end
+						index = ""
 						row.each do |actualAnswer|
-							if(consensus.has_key?(actualAnswer))
-								consensus[actualAnswer] += 1
-							else
-								consensus[actualAnswer] = 1
-							end
+							index = index + actualAnswer.to_s
+						end
+						
+						if(consensus.has_key?(index))
+							consensus[index] += 1
+						else
+							consensus[index] = 1
 						end
 					end
 				end
@@ -281,6 +284,8 @@ case ARGV[0]
 		rescue
 			puts "Not enough arguments"
 		end
+	when "test"
+		puts ""
 	else
 		autoUpdate
 end
