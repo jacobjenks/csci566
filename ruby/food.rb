@@ -116,7 +116,7 @@ def createNewHIT(questionId, imageId, imageURL)
 	desc = "The purpose of this task is to determine the types of food contained within the given image."
 	keywords = "food, classification"
 	numAssignments = 7
-	rewardAmount = 0.02
+	rewardAmount = 0.01
 
 	#Quantity questions contain the question ID + Q, or are asked at the bottom of the tree
 	if(/Q|q/ =~ questionId || !File.exist?(@base_directory+"questions/food_#{questionId}.question"))
