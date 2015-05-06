@@ -3,7 +3,7 @@
 --  @max_price: maximum price for hits
 --  @step_price: The amount the price per hit will increase per tier in the question tree
 --  @..._assign: same as price, but for number of assignments
-
+DROP TABLE IF EXISTS image;
 CREATE TABLE IF NOT EXISTS image(
 	id integer PRIMARY KEY,
 	url varchar(512) NOT NULL,
@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS image(
 	step_assign int DEFAULT 0
 );
 
+DROP TABLE IF EXISTS hit;
 CREATE TABLE IF NOT EXISTS hit(
 	image_id int NOT NULL,
 	task_tier varchar(10) NOT NULL,
@@ -25,6 +26,7 @@ CREATE TABLE IF NOT EXISTS hit(
 	REFERENCES image(id)
 );
 
+DROP TABLE IF EXISTS food;
 CREATE TABLE IF NOT EXISTS food(
 	image_id int NOT NULL,
 	task_tier varchar(10) NOT NULL,

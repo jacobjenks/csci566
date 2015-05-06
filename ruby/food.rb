@@ -6,13 +6,13 @@ require 'mturk'
 require 'sqlite3'
 
 #################### Variables ##########################
-@mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Sandbox
-#@mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Production
+#@mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Sandbox
+@mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Production
 
 @base_directory = File.expand_path(File.dirname(__FILE__))
 @base_directory = @base_directory.gsub(/ruby/, "")
-@db = SQLite3::Database.open @base_directory+"db/food_dev.db"
-#@db = SQLite3::Database.open @base_directory+"db/food.db"
+#@db = SQLite3::Database.open @base_directory+"db/food_dev.db"
+@db = SQLite3::Database.open @base_directory+"db/food.db"
 
 #################### Functions ###########################
 
@@ -139,8 +139,9 @@ def createNewHIT(questionId, imageId, imageURL, price, assignments)
 		:Reward => { :Amount => rewardAmount, :CurrencyCode => 'USD' },
 		:Question => question,
 		:Keywords => keywords )
-	rescue
+	rescue => error
 		puts "     Error parsing "+questionFile
+		puts "     "+error
 		exit
 	end
 
@@ -164,7 +165,7 @@ end
 def genTasks
 	puts "--Generating new HITs--"
 	###### Tier 0 tasks ##########
-	result = @db.prepare("SELECT id, url FROM image WHERE id NOT IN(SELECT image_id FROM hit)").execute
+	result = @db.prepare("SELECT * FROM image WHERE id NOT IN(SELECT image_id FROM hit)").execute
 
 	i = 0
 	finished = 0
@@ -250,7 +251,7 @@ def genTasks
 							decided = true
 							key.split(",").each do |newQ|
 								i+=1
-								createNewHIT(newQ,image[0],image[1],getHITParam(image[3],image[4],newQ.to_s.length),getHITParam(image[5], image[6], image[7], newQ.to_s.length))
+								createNewHIT(newQ,image[0],image[1],getHITScalingParam(image[2],image[3],image[4],newQ.to_s.length),getHITScalingParam(image[5], image[6], image[7], newQ.to_s.length))
 							end
 						end
 					end
@@ -260,7 +261,7 @@ def genTasks
 						i+=1
 						newQ = @mturk.simplifyAnswer(answers[0][:Answer]).values
 						newQ = newQ[0].to_s[0,newQ[0].to_s.length-1]+"Q"
-						createNewHIT(newQ,image[0],image[1],getHITParam(image[3],image[4],newQ.to_s.length),getHITParam(image[5], image[6], image[7], newQ.to_s.length))
+						createNewHIT(newQ,image[0],image[1],getHITScalingParam(image[2],image[3],image[4],newQ.to_s.length),getHITScalingParam(image[5], image[6], image[7], newQ.to_s.length))
 					end
 					
 					@db.execute("UPDATE hit SET complete=1 WHERE hit_id='#{hit}'")
@@ -274,8 +275,10 @@ def genTasks
 end
 
 #calculate HIT price, or number of assignments for HIT
-def getHITParam(min, max, step, taskTier)
-	if(min+(step*(taskTier)) < max)
+def getHITScalingParam(min, max, step, taskTier)
+	if(min > max)
+		return min
+	elsif(min+(step*(taskTier)) < max)
 		return min+(step*(taskTier))
 	else
 		return max
