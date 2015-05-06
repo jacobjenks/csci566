@@ -276,9 +276,7 @@ end
 
 #calculate HIT price, or number of assignments for HIT
 def getHITScalingParam(min, max, step, taskTier)
-	if(min > max)
-		return min
-	elsif(min+(step*(taskTier)) < max)
+	if(min > max || min+(step*(taskTier)) < max)
 		return min+(step*(taskTier))
 	else
 		return max
