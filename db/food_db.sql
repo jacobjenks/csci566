@@ -2,6 +2,7 @@
 --  @min_price: starting price for hits
 --  @max_price: maximum price for hits
 --  @step_price: The amount the price per hit will increase per tier in the question tree
+--  @..._assign: same as price, but for number of assignments
 
 CREATE TABLE IF NOT EXISTS image(
 	id integer PRIMARY KEY,
@@ -9,7 +10,9 @@ CREATE TABLE IF NOT EXISTS image(
 	min_price float DEFAULT 0,
 	max_price float DEFAULT 0,
 	step_price float DEFAULT 0,
-	assignments int DEFAULT 0
+	min_assign int DEFAULT 0,
+	max_assign int DEFAULT 0,
+	step_assign int DEFEAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS hit(
