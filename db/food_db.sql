@@ -1,8 +1,15 @@
 --	Table for holding image ids and image urls
---
+--  @min_price: starting price for hits
+--  @max_price: maximum price for hits
+--  @step_price: The amount the price per hit will increase per tier in the question tree
+
 CREATE TABLE IF NOT EXISTS image(
 	id integer PRIMARY KEY,
-	url varchar(512) NOT NULL
+	url varchar(512) NOT NULL,
+	min_price float DEFAULT 0,
+	max_price float DEFAULT 0,
+	step_price float DEFAULT 0,
+	assignments int DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS hit(

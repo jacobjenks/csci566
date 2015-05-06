@@ -6,15 +6,13 @@ require 'mturk'
 require 'sqlite3'
 
 #################### Variables ##########################
-#@mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Sandbox
-
-# Use this line instead if you want the production website.
-@mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Production
+@mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Sandbox
+#@mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Production
 
 @base_directory = File.expand_path(File.dirname(__FILE__))
 @base_directory = @base_directory.gsub(/ruby/, "")
-#@db = SQLite3::Database.open @base_directory+"db/food_dev.db"
-@db = SQLite3::Database.open @base_directory+"db/food.db"
+@db = SQLite3::Database.open @base_directory+"db/food_dev.db"
+#@db = SQLite3::Database.open @base_directory+"db/food.db"
 
 #################### Functions ###########################
 
@@ -110,23 +108,23 @@ def getAnswers(hit, status="")
 	return result
 end
 
-def createNewHIT(questionId, imageId, imageURL)
+def createNewHIT(questionId, imageId, imageURL, price, assignments)
 	questionId = questionId.to_s
 	title = "Food Classification"
 	desc = "The purpose of this task is to determine the types of food contained within the given image."
 	keywords = "food, classification"
-	numAssignments = 7
-	rewardAmount = 0.01
+	rewardAmount = price
+	numAssignments = assignments
 
 	#Quantity questions contain the question ID + Q, or are asked at the bottom of the tree
 	if(/Q|q/ =~ questionId || !File.exist?(@base_directory+"questions/food_#{questionId}.question"))
-		questionId = /[0-9]*/.match(questionId)[0]
+		trimmedID = /[0-9]*/.match(questionId)[0]
 		questionFile = @base_directory+"questions/quantity.question"
 		question = File.read(questionFile)
-		foodQ = File.read(@base_directory+"questions/food_"+questionId.slice(0,questionId.length-1)+".question")
-		food = /<SelectionIdentifier>#{questionId}<\/SelectionIdentifier>[\r\n\t\s]*<Text>([a-zA-Z,. ()]*)<\/Text>/.match(foodQ)[1].downcase
+		foodQ = File.read(@base_directory+"questions/food_"+trimmedID.slice(0,trimmedID.length-1)+".question")
+		food = /<SelectionIdentifier>#{trimmedID}<\/SelectionIdentifier>[\r\n\t\s]*<Text>([a-zA-Z,. ()]*)<\/Text>/.match(foodQ)[1].downcase
 		question = question.gsub(/\$food/, food)
-		question = question.gsub(/\$qId/, questionId.to_s+"Q")
+		question = question.gsub(/\$qId/, trimmedID.to_s+"Q")
 	else
 		questionFile = @base_directory+"questions/food_#{questionId}.question"
 		question = File.read(questionFile)
@@ -172,7 +170,7 @@ def genTasks
 	finished = 0
 	result.each do |row|
 		i += 1
-		createNewHIT('', row[0], row[1])
+		createNewHIT('', row[0], row[1], row[2], row[5])
 	end
 	
 	####### All other tasks #######
@@ -182,7 +180,7 @@ def genTasks
 	
 	hits.each do |hit|
 		hit = hit[0]
-		image = @db.get_first_row("SELECT id, url FROM image WHERE id=(SELECT image_id FROM hit WHERE hit_id='#{hit}')")
+		image = @db.get_first_row("SELECT * FROM image WHERE id=(SELECT image_id FROM hit WHERE hit_id='#{hit}')")
 		hitDetail = @mturk.getHIT(:HITId => hit)
 		answers = getAnswers(hit, "Approved")
 		
@@ -201,7 +199,7 @@ def genTasks
 					begin
 						@db.execute("INSERT INTO food VALUES('#{image[0]}', '#{question}', '#{avg}')")#store answer in DB for easy retrieval
 					rescue
-						puts "Duplicate detected. You done screwed up."
+						puts "Duplicate food identifier detected. You done screwed up."
 					end
 					@db.execute("UPDATE hit SET complete=1 WHERE hit_id='#{hit}'")
 					finished += 1
@@ -240,6 +238,7 @@ def genTasks
 				
 				#Gen new hits if we have majority or if all questions have been answered
 				if(majority || answers.length == hitDetail[:MaxAssignments].to_i)
+				
 					decided = false#Have the masses decided what this is yet?
 					if(majority)#quit early if we already have a majority vote
 						@mturk.forceExpireHIT(:HITId => hit)
@@ -249,9 +248,9 @@ def genTasks
 					consensus.each do |key, c|
 						if(c > hitDetail[:MaxAssignments].to_i/2)
 							decided = true
-							key.split(",").each do |q|
+							key.split(",").each do |newQ|
 								i+=1
-								createNewHIT(q, image[0], image[1])
+								createNewHIT(newQ,image[0],image[1],getHITPrice(image[3],image[4],newQ.to_s.length),image[5])
 							end
 						end
 					end
@@ -261,7 +260,7 @@ def genTasks
 						i+=1
 						newQ = @mturk.simplifyAnswer(answers[0][:Answer]).values
 						newQ = newQ[0].to_s[0,newQ[0].to_s.length-1]+"Q"
-						createNewHIT(newQ,image[0], image[1])
+						createNewHIT(newQ,image[0],image[1],getHITPrice(image[3],image[4],newQ.to_s.length),image[5])
 					end
 					
 					@db.execute("UPDATE hit SET complete=1 WHERE hit_id='#{hit}'")
@@ -272,6 +271,15 @@ def genTasks
 	
 	puts "     Created #{i} hits"
 	puts "     Finished #{finished} hits"
+end
+
+#calculate HIT price
+def getHITPrice(min, max, step, taskTier)
+	if(min+(step*(taskTier-1)) < max)
+		return min+(step*(taskTier-1))
+	else
+		return max
+	end
 end
 
 def autoUpdate
