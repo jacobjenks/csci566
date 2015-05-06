@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS image(
 	step_price float DEFAULT 0,
 	min_assign int DEFAULT 0,
 	max_assign int DEFAULT 0,
-	step_assign int DEFEAULT 0
+	step_assign int DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS hit(
