@@ -251,7 +251,7 @@ def genTasks
 							decided = true
 							key.split(",").each do |newQ|
 								i+=1
-								createNewHIT(newQ,image[0],image[1],getHITScalingParam(image[2],image[3],image[4],newQ.to_s.length),getHITScalingParam(image[5], image[6], image[7], newQ.to_s.length))
+								createNewHIT(newQ,image[0],image[1],getHITScalingParam(image[2],image[3],image[4],newQ.to_s.length),getHITScalingParam(image[5], image[6], image[7], newQ.to_s.length).to_i)
 							end
 						end
 					end
@@ -261,7 +261,7 @@ def genTasks
 						i+=1
 						newQ = @mturk.simplifyAnswer(answers[0][:Answer]).values
 						newQ = newQ[0].to_s[0,newQ[0].to_s.length-1]+"Q"
-						createNewHIT(newQ,image[0],image[1],getHITScalingParam(image[2],image[3],image[4],newQ.to_s.length),getHITScalingParam(image[5], image[6], image[7], newQ.to_s.length))
+						createNewHIT(newQ,image[0],image[1],getHITScalingParam(image[2],image[3],image[4],newQ.to_s.length),getHITScalingParam(image[5], image[6], image[7], newQ.to_s.length).to_i)
 					end
 					
 					@db.execute("UPDATE hit SET complete=1 WHERE hit_id='#{hit}'")
