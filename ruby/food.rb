@@ -120,7 +120,7 @@ def createNewHIT(questionId, imageId, imageURL, price, assignments)
 		questionFile = @base_directory+"questions/quantity.question"
 		question = File.read(questionFile)
 		foodQ = File.read(@base_directory+"questions/food_"+trimmedID.slice(0,trimmedID.length-1)+".question")
-		food = /<SelectionIdentifier>#{trimmedID}<\/SelectionIdentifier>[\r\n\t\s]*<Text>([a-zA-Z,. ()]*)<\/Text>/.match(foodQ)[1].downcase
+		food = /<SelectionIdentifier>#{trimmedID}<\/SelectionIdentifier>[\r\n\t\s]*<Text>([a-zA-Z,. ()-]*)<\/Text>/.match(foodQ)[1].downcase
 		question = question.gsub(/\$food/, food)
 		question = question.gsub(/\$qId/, trimmedID.to_s+"Q")
 	else
@@ -235,7 +235,19 @@ def genTasks
 				if(majority || answers.length == hitDetail[:MaxAssignments].to_i)
 				
 					decided = false#Have the masses decided what this is yet?
-					if(majority)#quit early if we already have a majority vote
+					if(majority)#quit early if we already have a majority vote, and approve all pending responses
+						answers = @mturk.getAssignmentsForHIT(:HITId => hit)
+						if(answers[:NumResults] > 0)
+							if(answers[:NumResults] == 1)#fix inconsistent formatting
+								answers[:Assignment] = [answers[:Assignment]]
+							end
+							#validate each response in hit
+							answers[:Assignment].each do |assign|
+								if(assign[:AssignmentStatus]=='Submitted')
+									@mturk.approveAssignment(:AssignmentId => assign[:AssignmentId], :RequesterFeedback => "Thanks!")#Approve
+								end
+							end
+						end
 						@mturk.forceExpireHIT(:HITId => hit)
 					end
 					
