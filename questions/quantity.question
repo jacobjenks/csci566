@@ -18,7 +18,7 @@
 		<AnswerSpecification>
 			<FreeTextAnswer>
 				<Constraints>
-					<IsNumeric minValue=".01" maxValue="2000"/>
+					<IsNumeric minValue="0" maxValue="2000"/>
 				</Constraints>
 			</FreeTextAnswer>
 		</AnswerSpecification>

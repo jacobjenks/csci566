@@ -139,6 +139,7 @@ def createNewHIT(questionId, imageId, imageURL, price, assignments)
 		:Keywords => keywords )
 	rescue => error
 		puts "     Error parsing "+questionFile
+		puts question
 		puts "     "+error
 		exit
 	end
