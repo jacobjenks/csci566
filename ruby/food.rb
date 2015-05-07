@@ -249,8 +249,7 @@ def genTasks
 					
 					#go up a tier and ask for quantity if no consensus was reached
 					if(!decided)
-						newQ = consensus.keys[0]
-						newQ = newQ.to_s[0,newQ[0].to_s.length-1]+"Q"
+						newQ = consensus.keys[0]+"Q"
 						if(newQ.to_s.length > 1)
 							i+=1
 							createNewHIT(newQ,image[0],image[1],getHITScalingParam(image[2],image[3],image[4],newQ.to_s.length),getHITScalingParam(image[5], image[6], image[7], newQ.to_s.length).to_i)
