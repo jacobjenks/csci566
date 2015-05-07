@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuestionForm xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd">
+	<Question>
+		<QuestionIdentifier>1</QuestionIdentifier>
+		<DisplayName>Food Source</DisplayName>
+		<IsRequired>true</IsRequired>
+		<QuestionContent>
+			<Text>Which of the following food sources are contained within the following image (select all that apply)?</Text>
+			<Binary>
+				<MimeType>
+					<Type>image</Type>
+					<SubType>jpg</SubType>
+				</MimeType>
+				<DataURL>$imageURL</DataURL>
+				<AltText>A picture of food.</AltText>
+			</Binary>
+		</QuestionContent>
+		<AnswerSpecification>
+		  <SelectionAnswer>
+			<StyleSuggestion>checkbox</StyleSuggestion>
+			<Selections>
+				<Selection>
+					<SelectionIdentifier>018Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0180</SelectionIdentifier>
+					<Text>Button mushroom</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0181</SelectionIdentifier>
+					<Text>Shiitake mushroom</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0182</SelectionIdentifier>
+					<Text>Other mushroom</Text>
+				</Selection>
+			</Selections>
+		  </SelectionAnswer>
+		</AnswerSpecification>
+	</Question>
+</QuestionForm>

@@ -20,10 +20,6 @@
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
 				<Selection>
-					<SelectionIdentifier>00Q</SelectionIdentifier>
-					<Text>The image does not contain any of the food sources listed below</Text>
-				</Selection>
-				<Selection>
 					<SelectionIdentifier>000</SelectionIdentifier>
 					<Text>Rice, wheat, corn, or other cereal grains</Text>
 				</Selection>

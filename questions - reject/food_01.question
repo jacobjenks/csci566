@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuestionForm xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd">
+	<Question>
+		<QuestionIdentifier>1</QuestionIdentifier>
+		<DisplayName>Food Source</DisplayName>
+		<IsRequired>true</IsRequired>
+		<QuestionContent>
+			<Text>Which of the following food sources are contained within the following image (select all that apply)?</Text>
+			<Binary>
+				<MimeType>
+					<Type>image</Type>
+					<SubType>jpg</SubType>
+				</MimeType>
+				<DataURL>$imageURL</DataURL>
+				<AltText>A picture of food.</AltText>
+			</Binary>
+		</QuestionContent>
+		<AnswerSpecification>
+		  <SelectionAnswer>
+			<StyleSuggestion>checkbox</StyleSuggestion>
+			<Selections>
+				<Selection>
+					<SelectionIdentifier>01Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>010</SelectionIdentifier>
+					<Text>Potatoes</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>011</SelectionIdentifier>
+					<Text>Sugar source</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>012</SelectionIdentifier>
+					<Text>Cruciferous vegetables (radishes, cabbages, broccoli, brussels sprouts and other roots)</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>013</SelectionIdentifier>
+					<Text>Composite vegetables (artichoke, lettuce, chicory, other herbs)</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>014</SelectionIdentifier>
+					<Text>Liliaceous vegetables (onions, garlic, asparagus)</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>015</SelectionIdentifier>
+					<Text>Umbelliferous vegetables (carrots, celery, parsnip, other hollow-stem vegetables)</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>016</SelectionIdentifier>
+					<Text>Solanaceous vegetables (tomato, eggplant and sweet peppers)</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>017</SelectionIdentifier>
+					<Text>Cucurbitaceous vegetables (melons, pumpkins and cucumber)</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>018</SelectionIdentifier>
+					<Text>Mushrooms</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>019</SelectionIdentifier>
+					<Text>Spinach, okra, ginger, bamboo, or other vegetables</Text>
+				</Selection>
+			</Selections>
+		  </SelectionAnswer>
+		</AnswerSpecification>
+	</Question>
+</QuestionForm>

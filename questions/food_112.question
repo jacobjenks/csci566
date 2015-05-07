@@ -20,10 +20,6 @@
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
 				<Selection>
-					<SelectionIdentifier>112Q</SelectionIdentifier>
-					<Text>The image does not contain any of the food sources listed below</Text>
-				</Selection>
-				<Selection>
 					<SelectionIdentifier>1120</SelectionIdentifier>
 					<Text>Crab, lobster, or other crustacean</Text>
 				</Selection>

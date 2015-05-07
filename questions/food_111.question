@@ -20,10 +20,6 @@
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
 				<Selection>
-					<SelectionIdentifier>111Q</SelectionIdentifier>
-					<Text>The image does not contain any of the food sources listed below</Text>
-				</Selection>
-				<Selection>
 					<SelectionIdentifier>1110</SelectionIdentifier>
 					<Text>Salmon or trout</Text>
 				</Selection>

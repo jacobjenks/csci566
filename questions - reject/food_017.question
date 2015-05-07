@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuestionForm xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd">
+	<Question>
+		<QuestionIdentifier>1</QuestionIdentifier>
+		<DisplayName>Food Source</DisplayName>
+		<IsRequired>true</IsRequired>
+		<QuestionContent>
+			<Text>Which of the following food sources are contained within the following image (select all that apply)?</Text>
+			<Binary>
+				<MimeType>
+					<Type>image</Type>
+					<SubType>jpg</SubType>
+				</MimeType>
+				<DataURL>$imageURL</DataURL>
+				<AltText>A picture of food.</AltText>
+			</Binary>
+		</QuestionContent>
+		<AnswerSpecification>
+		  <SelectionAnswer>
+			<StyleSuggestion>checkbox</StyleSuggestion>
+			<Selections>
+				<Selection>
+					<SelectionIdentifier>017Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0170</SelectionIdentifier>
+					<Text>Cucumber (or pickle)</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0171</SelectionIdentifier>
+					<Text>Pumpkin</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0172</SelectionIdentifier>
+					<Text>Squash</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0173</SelectionIdentifier>
+					<Text>Watermelon</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0174</SelectionIdentifier>
+					<Text>Other melon</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0175</SelectionIdentifier>
+					<Text>Other cucurbitaceous vegetable</Text>
+				</Selection>
+			</Selections>
+		  </SelectionAnswer>
+		</AnswerSpecification>
+	</Question>
+</QuestionForm>

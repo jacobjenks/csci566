@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuestionForm xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd">
+	<Question>
+		<QuestionIdentifier>1</QuestionIdentifier>
+		<DisplayName>Food Source</DisplayName>
+		<IsRequired>true</IsRequired>
+		<QuestionContent>
+			<Text>Which of the following food sources are contained within the following image (select all that apply)?</Text>
+			<Binary>
+				<MimeType>
+					<Type>image</Type>
+					<SubType>jpg</SubType>
+				</MimeType>
+				<DataURL>$imageURL</DataURL>
+				<AltText>A picture of food.</AltText>
+			</Binary>
+		</QuestionContent>
+		<AnswerSpecification>
+		  <SelectionAnswer>
+			<StyleSuggestion>checkbox</StyleSuggestion>
+			<Selections>
+				<Selection>
+					<SelectionIdentifier>014Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0140</SelectionIdentifier>
+					<Text>Onion</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0141</SelectionIdentifier>
+					<Text>Leek</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0142</SelectionIdentifier>
+					<Text>Garlic</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0143</SelectionIdentifier>
+					<Text>Asparagus</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0144</SelectionIdentifier>
+					<Text>Shallot</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0145</SelectionIdentifier>
+					<Text>Other liliaceous vegetable</Text>
+				</Selection>
+			</Selections>
+		  </SelectionAnswer>
+		</AnswerSpecification>
+	</Question>
+</QuestionForm>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuestionForm xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd">
+	<Question>
+		<QuestionIdentifier>1</QuestionIdentifier>
+		<DisplayName>Food Source</DisplayName>
+		<IsRequired>true</IsRequired>
+		<QuestionContent>
+			<Text>Which of the following food sources are contained within the following image (select all that apply)?</Text>
+			<Binary>
+				<MimeType>
+					<Type>image</Type>
+					<SubType>jpg</SubType>
+				</MimeType>
+				<DataURL>$imageURL</DataURL>
+				<AltText>A picture of food.</AltText>
+			</Binary>
+		</QuestionContent>
+		<AnswerSpecification>
+		  <SelectionAnswer>
+			<StyleSuggestion>checkbox</StyleSuggestion>
+			<Selections>
+				<Selection>
+					<SelectionIdentifier>012Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0120</SelectionIdentifier>
+					<Text>Radish</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0121</SelectionIdentifier>
+					<Text>Turnip</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0122</SelectionIdentifier>
+					<Text>Horseradish</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0123</SelectionIdentifier>
+					<Text>Watercress</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0124</SelectionIdentifier>
+					<Text>Cabbage</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0125</SelectionIdentifier>
+					<Text>Brussels sprouts</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0126</SelectionIdentifier>
+					<Text>Kale</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0127</SelectionIdentifier>
+					<Text>Cauliflower</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0128</SelectionIdentifier>
+					<Text>Broccoli</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0129</SelectionIdentifier>
+					<Text>Other cruciferous vegetables</Text>
+				</Selection>
+			</Selections>
+		  </SelectionAnswer>
+		</AnswerSpecification>
+	</Question>
+</QuestionForm>

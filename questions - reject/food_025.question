@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuestionForm xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd">
+	<Question>
+		<QuestionIdentifier>1</QuestionIdentifier>
+		<DisplayName>Food Source</DisplayName>
+		<IsRequired>true</IsRequired>
+		<QuestionContent>
+			<Text>Which of the following food sources are contained within the following image (select all that apply)?</Text>
+			<Binary>
+				<MimeType>
+					<Type>image</Type>
+					<SubType>jpg</SubType>
+				</MimeType>
+				<DataURL>$imageURL</DataURL>
+				<AltText>A picture of food.</AltText>
+			</Binary>
+		</QuestionContent>
+		<AnswerSpecification>
+		  <SelectionAnswer>
+			<StyleSuggestion>checkbox</StyleSuggestion>
+			<Selections>
+				<Selection>
+					<SelectionIdentifier>025Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0250</SelectionIdentifier>
+					<Text>Persimmon</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0251</SelectionIdentifier>
+					<Text>Banana</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0252</SelectionIdentifier>
+					<Text>Kiwifruit</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0253</SelectionIdentifier>
+					<Text>Papaya</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0254</SelectionIdentifier>
+					<Text>Avocado</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0255</SelectionIdentifier>
+					<Text>Pineapple</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0256</SelectionIdentifier>
+					<Text>Guava</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0257</SelectionIdentifier>
+					<Text>Mango</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0258</SelectionIdentifier>
+					<Text>Passion Fruit</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0259</SelectionIdentifier>
+					<Text>Other</Text>
+				</Selection>
+			</Selections>
+		  </SelectionAnswer>
+		</AnswerSpecification>
+	</Question>
+</QuestionForm>

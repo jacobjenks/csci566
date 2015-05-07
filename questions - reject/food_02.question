@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuestionForm xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd">
+	<Question>
+		<QuestionIdentifier>1</QuestionIdentifier>
+		<DisplayName>Food Source</DisplayName>
+		<IsRequired>true</IsRequired>
+		<QuestionContent>
+			<Text>Which of the following food sources are contained within the following image (select all that apply)?</Text>
+			<Binary>
+				<MimeType>
+					<Type>image</Type>
+					<SubType>jpg</SubType>
+				</MimeType>
+				<DataURL>$imageURL</DataURL>
+				<AltText>A picture of food.</AltText>
+			</Binary>
+		</QuestionContent>
+		<AnswerSpecification>
+		  <SelectionAnswer>
+			<StyleSuggestion>checkbox</StyleSuggestion>
+			<Selections>
+				<Selection>
+					<SelectionIdentifier>02Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>020</SelectionIdentifier>
+					<Text>Citrus fruits</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>021</SelectionIdentifier>
+					<Text>Pome fruits (apples or pears)</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>022</SelectionIdentifier>
+					<Text>Stone fruits (peaches, apricots, plums, or cherries)</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>023</SelectionIdentifier>
+					<Text>Berries</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>024</SelectionIdentifier>
+					<Text>Grape</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>025</SelectionIdentifier>
+					<Text>Other tropical/subtropical fruit</Text>
+				</Selection>
+			</Selections>
+		  </SelectionAnswer>
+		</AnswerSpecification>
+	</Question>
+</QuestionForm>

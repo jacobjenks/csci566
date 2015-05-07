@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuestionForm xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd">
+	<Question>
+		<QuestionIdentifier>1</QuestionIdentifier>
+		<DisplayName>Food Source</DisplayName>
+		<IsRequired>true</IsRequired>
+		<QuestionContent>
+			<Text>Which of the following food sources are contained within the following image (select all that apply)?</Text>
+			<Binary>
+				<MimeType>
+					<Type>image</Type>
+					<SubType>jpg</SubType>
+				</MimeType>
+				<DataURL>$imageURL</DataURL>
+				<AltText>A picture of food.</AltText>
+			</Binary>
+		</QuestionContent>
+		<AnswerSpecification>
+		  <SelectionAnswer>
+			<StyleSuggestion>checkbox</StyleSuggestion>
+			<Selections>
+				<Selection>
+					<SelectionIdentifier>030Q</SelectionIdentifier>
+					<Text>The image does not contain any of the food sources listed below</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0300</SelectionIdentifier>
+					<Text>Sunflower Seeds</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0301</SelectionIdentifier>
+					<Text>Sesame seeds</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0302</SelectionIdentifier>
+					<Text>Cotton seeds</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0303</SelectionIdentifier>
+					<Text>Ginkgo nut</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0304</SelectionIdentifier>
+					<Text>Chestnut</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0305</SelectionIdentifier>
+					<Text>Pecan</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0306</SelectionIdentifier>
+					<Text>Almond</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0307</SelectionIdentifier>
+					<Text>Walnut</Text>
+				</Selection>
+				<Selection>
+					<SelectionIdentifier>0308</SelectionIdentifier>
+					<Text>Other nut</Text>
+				</Selection>
+			</Selections>
+		  </SelectionAnswer>
+		</AnswerSpecification>
+	</Question>
+</QuestionForm>
