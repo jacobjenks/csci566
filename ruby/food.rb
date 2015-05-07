@@ -113,8 +113,6 @@ def createNewHIT(questionId, imageId, imageURL, price, assignments)
 	title = "Food Classification"
 	desc = "The purpose of this task is to determine the types of food contained within the given image."
 	keywords = "food, classification"
-	rewardAmount = price
-	numAssignments = assignments
 
 	#Quantity questions contain the question ID + Q, or are asked at the bottom of the tree
 	if(/Q|q/ =~ questionId || !File.exist?(@base_directory+"questions/food_#{questionId}.question"))
@@ -135,8 +133,8 @@ def createNewHIT(questionId, imageId, imageURL, price, assignments)
 	begin
 		result = @mturk.createHIT( :Title => title,
 		:Description => desc,
-		:MaxAssignments => numAssignments,
-		:Reward => { :Amount => rewardAmount, :CurrencyCode => 'USD' },
+		:MaxAssignments => assignments,
+		:Reward => { :Amount => price, :CurrencyCode => 'USD' },
 		:Question => question,
 		:Keywords => keywords )
 	rescue => error
@@ -227,7 +225,7 @@ def genTasks
 				#do we have a majority vote yet? check for majority vote in every category
 				majority = true
 				consensus.each do |key, c|
-					if(consensus[key] < hitDetail[:MaxAssignments].to_f/2)
+					if(consensus[key] <= hitDetail[:MaxAssignments].to_f/2)
 						majority = false
 					end
 				end
