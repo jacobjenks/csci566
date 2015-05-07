@@ -212,28 +212,23 @@ def genTasks
 						if(!row.kind_of?(Array))#stupid formatting stuff again
 							row = [row]
 						end
-						index = ""
 						row.each do |actualAnswer|
-							if(index=="")
-								index = actualAnswer.to_s
+							if(consensus.has_key?(actualAnswer.to_s))
+								consensus[actualAnswer.to_s] += 1
 							else
-								index = index +","+actualAnswer.to_s
+								consensus[actualAnswer.to_s] = 1
 							end
 						end
 						
-						if(consensus.has_key?(index))
-							consensus[index] += 1
-						else
-							consensus[index] = 1
-						end
+						
 					end
 				end
 				
-				#do we have a majority vote yet?
-				majority = false
+				#do we have a majority vote yet? check for majority vote in every category
+				majority = true
 				consensus.each do |key, c|
-					if(consensus[key] > hitDetail[:MaxAssignments].to_f/2)
-						majority = true
+					if(consensus[key] < hitDetail[:MaxAssignments].to_f/2)
+						majority = false
 					end
 				end
 				
@@ -249,19 +244,19 @@ def genTasks
 					consensus.each do |key, c|
 						if(c > hitDetail[:MaxAssignments].to_i/2)
 							decided = true
-							key.split(",").each do |newQ|
-								i+=1
-								createNewHIT(newQ,image[0],image[1],getHITScalingParam(image[2],image[3],image[4],newQ.to_s.length),getHITScalingParam(image[5], image[6], image[7], newQ.to_s.length).to_i)
-							end
+							i+=1
+							createNewHIT(key,image[0],image[1],getHITScalingParam(image[2],image[3],image[4],key.to_s.length),getHITScalingParam(image[5], image[6], image[7], key.to_s.length).to_i)
 						end
 					end
 					
 					#go up a tier and ask for quantity if no consensus was reached
 					if(!decided)
-						i+=1
-						newQ = @mturk.simplifyAnswer(answers[0][:Answer]).values
-						newQ = newQ[0].to_s[0,newQ[0].to_s.length-1]+"Q"
-						createNewHIT(newQ,image[0],image[1],getHITScalingParam(image[2],image[3],image[4],newQ.to_s.length),getHITScalingParam(image[5], image[6], image[7], newQ.to_s.length).to_i)
+						newQ = consensus.keys[0]
+						newQ = newQ.to_s[0,newQ[0].to_s.length-1]+"Q"
+						if(newQ.to_s.length > 1)
+							i+=1
+							createNewHIT(newQ,image[0],image[1],getHITScalingParam(image[2],image[3],image[4],newQ.to_s.length),getHITScalingParam(image[5], image[6], image[7], newQ.to_s.length).to_i)
+						end
 					end
 					
 					@db.execute("UPDATE hit SET complete=1 WHERE hit_id='#{hit}'")
