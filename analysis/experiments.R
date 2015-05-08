@@ -10,6 +10,16 @@ pct <- round(slices/sum(slices)*100)
 lbls <- paste(lbls, pct) # add percents to labels 
 lbls <- paste(lbls,"%",sep="") # ad % to labels 
 pie(slices,labels = lbls, col=c("white", "gray", "black"))
+title(main = "Percentage of Correct Identifications")
+
+incomplete <- subset(food, last_layer != "4")
+slices2 <- prop.table(table(incomplete$last_layer))
+lbls2 <- c("Layer 3:", "Layer 2:", "Layer 1:")
+pct2 <- round(slices/sum(slices)*100)
+lbls2 <- paste(lbls2, pct2) # add percents to labels 
+lbls2 <- paste(lbls2,"%",sep="") # ad % to labels 
+pie(slices2,labels = lbls2, col=c("white", "gray", "black"))
+title(main = "Incomplete Identification Failures")
 
 # means of accuracy across batch sizes
 boxplot(accuracy ~ batch_size, data = food, xlab = "HIT Batch Size", ylab="Percent of Actual Quantity")
@@ -33,5 +43,5 @@ legend("top", legend = c("01", "02", "03"),
        fill=c("white", "gray", "black"),
        title="Image ID")
 
-aov.correct <- aov(correct ~ image + batch_size, data = food)
-aov.accuracy <- aov(accuracy ~ image + batch_size, data = food)
+#aov.correct <- aov(correct ~ image + batch_size, data = food)
+#aov.accuracy <- aov(accuracy ~ image + batch_size, data = food)
