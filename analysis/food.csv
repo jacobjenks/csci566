@@ -1,0 +1,42 @@
+experiment,result,quantity,image,correct,last_layer,correct_descrip
+1,1001,155.428571428571,meatloaf,yes,Four,Correct
+1,0100,200.714285714286,meatloaf,yes,Four,Correct
+2,0,47.2857142857143,meatloaf,no,One,No Identification
+1,10,275.097,meatloaf,no,Two,No Identification
+4,1,23.3333333333333,stirfry,no,Two,No Identification
+3,1,44.0,meatloaf,no,One,No Identification
+4,0,235.0,stirfry,no,One,No Identification
+3,0,230.0,meatloaf,no,One,No Identification
+5,000,100.833333333333,oatmeal,no,Three,No Identification
+6,1,206.666666666667,meatloaf,no,One,No Identification
+6,0,163.0,meatloaf,no,One,No Identification
+9,0001,33.8333333333333,oatmeal,yes,Four,Correct
+7,1001,82.6666666666667,meatloaf,yes,Four,Correct
+8,1020,140.833333333333,stirfry,yes,Four,Correct
+7,0,47.8333333333333,meatloaf,no,One,No Identification
+12,000,72.8571428571429,oatmeal,no,Three,No Identification
+11,0000,145.0,stirfry,yes,Four,Correct
+8,0,171.666666666667,stirfry,no,Three,No Identification
+10,0100,59.2857142857143,meatloaf,yes,Four,Correct
+10,1001,168.0,meatloaf,yes,Four,Correct
+11,1020,128.285714285714,stirfry,yes,Four,Correct
+14,1,108.375,stirfry,no,One,No Identification
+13,100,339.125,meatloaf,no,Three,No Identification
+13,0,50.875,meatloaf,no,One,No Identification
+15,000,175.0,oatmeal,no,Three,No Identification
+16,104,118.888888888889,meatloaf,no,Three,No Identification
+17,0000,199.111111111111,stirfry,yes,Four,Correct
+18,0001,271.555555555556,oatmeal,yes,Four,Correct
+18,0002,154.666666666667,oatmeal,no,Four,Incorrect
+17,1020,153.666666666667,stirfry,yes,Four,Correct
+16,0111,81.5555555555556,meatloaf,no,Four,Incorrect
+16,0110,62.8888888888889,meatloaf,no,Four,Incorrect
+16,010,121.666666666667,meatloaf,no,Three,No Identification
+20,0000,76.5,stirfry,yes,Four,Correct
+19,10,49.5,stirfry,no,Two,No Identification
+20,10,191.3,stirfry,no,Two,No Identification
+21,000,228.5,oatmeal,no,Three,No Identification
+23,0400,105.4,stirfry,yes,Four,Correct
+24,0006,105.2,oatmeal,yes,Four,Correct
+22,1001,53.0,meatloaf,yes,Four,Correct
+23,0000,152.4,stirfry,yes,Four,Correct
