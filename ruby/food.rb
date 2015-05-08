@@ -95,8 +95,7 @@ def getAnswers(hit, status="")
 	result = Array.new
 	if(answers[:NumResults] == 1)
 		if(status=="" || answers[:Assignment][:AssignmentStatus]==status)
-			answers[:Answer] = answers[:Assignment][:Answer]
-			result << answers
+			result << answers[:Assignment]
 		end
 	elsif(answers[:NumResults] > 1)
 		answers[:Assignment].each do |answer|
@@ -338,6 +337,35 @@ case ARGV[0]
 		end
 	when "getWorkerResponses"
 		puts getWorkerResponses
+	when "getHITCancelRate"
+		puts "HIT Id,Assigned,Answered"
+		hits = getHITs
+		hits.each do |hit|
+			hit = getHIT(hit)
+			puts  hit[:HITId]+","+hit[:MaxAssignments].to_s + "," + hit[:NumberOfAssignmentsCompleted].to_s
+		end
+	when "getHITDuration"
+		#output hit duration in minutes
+		puts "HIT Id,Duration"
+		hits = getHITs
+		hits.each do |hit|
+			hit = getHIT(hit)
+			answers = getAnswers(hit[:HITId])
+			
+			creation = DateTime.parse(hit[:CreationTime].to_s)
+			completion = DateTime.new(1990)
+			
+			answers.each do |answer|
+				begin
+					temp = DateTime.parse(answer[:ApprovalTime].to_s)
+					if(temp > completion)
+						completion = temp
+					end
+				rescue
+				end
+			end
+			puts  hit[:HITId]+","+((completion-creation)*24*60).to_f.round(2).to_s
+		end
 	when "test"
 		puts ""
 	else
