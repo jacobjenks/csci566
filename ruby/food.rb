@@ -338,6 +338,13 @@ case ARGV[0]
 		end
 	when "getWorkerResponses"
 		puts getWorkerResponses
+	when "getHITCancelRate"
+		puts "HIT Id,Assigned,Answered"
+		hits = getHITs
+		hits.each do |hit|
+			hit = getHIT(hit)
+			puts  hit[:HITId]+","+hit[:MaxAssignments].to_s + "," + hit[:NumberOfAssignmentsCompleted].to_s
+		end
 	when "test"
 		puts ""
 	else
