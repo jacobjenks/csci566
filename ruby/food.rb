@@ -346,7 +346,7 @@ case ARGV[0]
 		end
 	when "getHITDuration"
 		#output hit duration in minutes
-		puts "HIT Id,Duration"
+		puts "HIT Id,HIT cost,Duration"
 		hits = getHITs
 		hits.each do |hit|
 			hit = getHIT(hit)
@@ -364,7 +364,7 @@ case ARGV[0]
 				rescue
 				end
 			end
-			puts  hit[:HITId]+","+((completion-creation)*24*60).to_f.round(2).to_s
+			puts  hit[:HITId]+","+hit[:Reward][:Amount].to_s+","+((completion-creation)*24*60).to_f.round(2).to_s
 		end
 	when "test"
 		puts ""
