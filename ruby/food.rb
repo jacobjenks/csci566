@@ -120,7 +120,7 @@ def createNewHIT(questionId, imageId, imageURL, price, assignments)
 		questionFile = @base_directory+"questions/quantity.question"
 		question = File.read(questionFile)
 		foodQ = File.read(@base_directory+"questions/food_"+trimmedID.slice(0,trimmedID.length-1)+".question")
-		food = /<SelectionIdentifier>#{trimmedID}<\/SelectionIdentifier>[\r\n\t\s]*<Text>([a-zA-Z,. ()-]*)<\/Text>/.match(foodQ)[1].downcase
+		food = /<SelectionIdentifier>#{trimmedID}<\/SelectionIdentifier>[\r\n\t\s]*<Text>([a-zA-Z,. ()-\/\\]*)<\/Text>/.match(foodQ)[1].downcase
 		question = question.gsub(/\$food/, food)
 		question = question.gsub(/\$qId/, trimmedID.to_s+"Q")
 	else
