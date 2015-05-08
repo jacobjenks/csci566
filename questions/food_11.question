@@ -5,7 +5,7 @@
 		<DisplayName>Food Source</DisplayName>
 		<IsRequired>true</IsRequired>
 		<QuestionContent>
-			<Text>Which of the following food sources are contained within the following image?</Text>
+			<Text>Which of the following food sources are contained within the following image (select all that apply)?</Text>
 			<Binary>
 				<MimeType>
 					<Type>image</Type>
@@ -19,10 +19,6 @@
 		  <SelectionAnswer>
 			<StyleSuggestion>checkbox</StyleSuggestion>
 			<Selections>
-				<Selection>
-					<SelectionIdentifier>11Q</SelectionIdentifier>
-					<Text>The image does not contain any of the food sources listed below</Text>
-				</Selection>
 				<Selection>
 					<SelectionIdentifier>110</SelectionIdentifier>
 					<Text>Fish</Text>

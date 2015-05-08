@@ -6,14 +6,13 @@ require 'mturk'
 require 'sqlite3'
 
 #################### Variables ##########################
-@mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Sandbox
-
-# Use this line instead if you want the production website.
-#@mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Production
+#@mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Sandbox
+@mturk = Amazon::WebServices::MechanicalTurkRequester.new :Host => :Production
 
 @base_directory = File.expand_path(File.dirname(__FILE__))
 @base_directory = @base_directory.gsub(/ruby/, "")
-@db = SQLite3::Database.open @base_directory+"db/food_dev.db"
+#@db = SQLite3::Database.open @base_directory+"db/food_dev.db"
+@db = SQLite3::Database.open @base_directory+"db/food.db"
 
 #################### Functions ###########################
 
@@ -71,6 +70,10 @@ def processReviewableHits
 	puts "     Rejected: " + reject.to_s
 end
 
+def getHIT(id)
+	return @mturk.getHIT(:HITId => id)
+end
+
 #get all hits and their status
 #@param status: Filter by HITs with the given status. Options are 'Assignable', 'Unassignable', 'Reviewable', 'Reviewing', and 'Disposed'
 def getHITs(status="")
@@ -82,7 +85,7 @@ def getHITs(status="")
 			result[id] = hit
 		end
 	end
-	puts result
+	return hits
 end
 
 #Get HIT answers
@@ -105,23 +108,21 @@ def getAnswers(hit, status="")
 	return result
 end
 
-def createNewHIT(questionId, imageId, imageURL)
+def createNewHIT(questionId, imageId, imageURL, price, assignments)
 	questionId = questionId.to_s
 	title = "Food Classification"
 	desc = "The purpose of this task is to determine the types of food contained within the given image."
 	keywords = "food, classification"
-	numAssignments = 3
-	rewardAmount = 0.01
 
 	#Quantity questions contain the question ID + Q, or are asked at the bottom of the tree
 	if(/Q|q/ =~ questionId || !File.exist?(@base_directory+"questions/food_#{questionId}.question"))
-		questionId = /[0-9]*/.match(questionId)[0]
+		trimmedID = /[0-9]*/.match(questionId)[0]
 		questionFile = @base_directory+"questions/quantity.question"
 		question = File.read(questionFile)
-		foodQ = File.read(@base_directory+"questions/food_"+questionId.slice(0,questionId.length-1)+".question")
-		food = /<SelectionIdentifier>#{questionId}<\/SelectionIdentifier>[\r\n\t\s]*<Text>([a-zA-Z,. ()]*)<\/Text>/.match(foodQ)[1].downcase
+		foodQ = File.read(@base_directory+"questions/food_"+trimmedID.slice(0,trimmedID.length-1)+".question")
+		food = /<SelectionIdentifier>#{trimmedID}<\/SelectionIdentifier>[\r\n\t\s]*<Text>([a-zA-Z,. ()-\/\\]*)<\/Text>/.match(foodQ)[1].downcase
 		question = question.gsub(/\$food/, food)
-		question = question.gsub(/\$qId/, questionId.to_s+"Q")
+		question = question.gsub(/\$qId/, trimmedID.to_s+"Q")
 	else
 		questionFile = @base_directory+"questions/food_#{questionId}.question"
 		question = File.read(questionFile)
@@ -132,12 +133,14 @@ def createNewHIT(questionId, imageId, imageURL)
 	begin
 		result = @mturk.createHIT( :Title => title,
 		:Description => desc,
-		:MaxAssignments => numAssignments,
-		:Reward => { :Amount => rewardAmount, :CurrencyCode => 'USD' },
+		:MaxAssignments => assignments,
+		:Reward => { :Amount => price, :CurrencyCode => 'USD' },
 		:Question => question,
 		:Keywords => keywords )
-	rescue
+	rescue => error
 		puts "     Error parsing "+questionFile
+		puts question
+		puts "     "+error
 		exit
 	end
 
@@ -161,13 +164,13 @@ end
 def genTasks
 	puts "--Generating new HITs--"
 	###### Tier 0 tasks ##########
-	result = @db.prepare("SELECT id, url FROM image WHERE id NOT IN(SELECT image_id FROM hit)").execute
+	result = @db.prepare("SELECT * FROM image WHERE id NOT IN(SELECT image_id FROM hit)").execute
 
 	i = 0
 	finished = 0
 	result.each do |row|
 		i += 1
-		createNewHIT('', row[0], row[1])
+		createNewHIT('', row[0], row[1], row[2], row[5])
 	end
 	
 	####### All other tasks #######
@@ -177,7 +180,7 @@ def genTasks
 	
 	hits.each do |hit|
 		hit = hit[0]
-		image = @db.get_first_row("SELECT id, url FROM image WHERE id=(SELECT image_id FROM hit WHERE hit_id='#{hit}')")
+		image = @db.get_first_row("SELECT * FROM image WHERE id=(SELECT image_id FROM hit WHERE hit_id='#{hit}')")
 		hitDetail = @mturk.getHIT(:HITId => hit)
 		answers = getAnswers(hit, "Approved")
 		
@@ -196,7 +199,7 @@ def genTasks
 					begin
 						@db.execute("INSERT INTO food VALUES('#{image[0]}', '#{question}', '#{avg}')")#store answer in DB for easy retrieval
 					rescue
-						puts "Duplicate detected. You done screwed up."
+						puts "Duplicate food identifier detected. You done screwed up."
 					end
 					@db.execute("UPDATE hit SET complete=1 WHERE hit_id='#{hit}'")
 					finished += 1
@@ -209,27 +212,42 @@ def genTasks
 							row = [row]
 						end
 						row.each do |actualAnswer|
-							if(consensus.has_key?(actualAnswer))
-								consensus[actualAnswer] += 1
+							if(consensus.has_key?(actualAnswer.to_s))
+								consensus[actualAnswer.to_s] += 1
 							else
-								consensus[actualAnswer] = 1
+								consensus[actualAnswer.to_s] = 1
 							end
 						end
+						
+						
 					end
 				end
 				
-				#do we have a majority vote yet?
-				majority = false
+				#do we have a majority vote yet? check for majority vote in every category
+				majority = true
 				consensus.each do |key, c|
-					if(consensus[key] > hitDetail[:MaxAssignments].to_f/2)
-						majority = true
+					if(consensus[key] <= hitDetail[:MaxAssignments].to_f/2)
+						majority = false
 					end
 				end
 				
 				#Gen new hits if we have majority or if all questions have been answered
 				if(majority || answers.length == hitDetail[:MaxAssignments].to_i)
+				
 					decided = false#Have the masses decided what this is yet?
-					if(majority)#quit early if we already have a majority vote
+					if(majority)#quit early if we already have a majority vote, and approve all pending responses
+						answers = @mturk.getAssignmentsForHIT(:HITId => hit)
+						if(answers[:NumResults] > 0)
+							if(answers[:NumResults] == 1)#fix inconsistent formatting
+								answers[:Assignment] = [answers[:Assignment]]
+							end
+							#validate each response in hit
+							answers[:Assignment].each do |assign|
+								if(assign[:AssignmentStatus]=='Submitted')
+									@mturk.approveAssignment(:AssignmentId => assign[:AssignmentId], :RequesterFeedback => "Thanks!")#Approve
+								end
+							end
+						end
 						@mturk.forceExpireHIT(:HITId => hit)
 					end
 					
@@ -238,16 +256,18 @@ def genTasks
 						if(c > hitDetail[:MaxAssignments].to_i/2)
 							decided = true
 							i+=1
-							createNewHIT(key, image[0], image[1])
+							createNewHIT(key,image[0],image[1],getHITScalingParam(image[2],image[3],image[4],key.to_s.length),getHITScalingParam(image[5], image[6], image[7], key.to_s.length).to_i)
 						end
 					end
 					
 					#go up a tier and ask for quantity if no consensus was reached
 					if(!decided)
-						i+=1
-						newQ = @mturk.simplifyAnswer(answers[0][:Answer]).values
-						newQ = newQ[0].to_s[0,newQ[0].to_s.length-1]+"Q"
-						createNewHIT(newQ,image[0], image[1])
+						newQ = consensus.keys[0]
+						newQ = newQ.to_s[0,newQ.to_s.length-1]+"Q"
+						if(newQ.to_s.length > 1)
+							i+=1
+							createNewHIT(newQ,image[0],image[1],getHITScalingParam(image[2],image[3],image[4],newQ.to_s.length),getHITScalingParam(image[5], image[6], image[7], newQ.to_s.length).to_i)
+						end
 					end
 					
 					@db.execute("UPDATE hit SET complete=1 WHERE hit_id='#{hit}'")
@@ -260,6 +280,67 @@ def genTasks
 	puts "     Finished #{finished} hits"
 end
 
+#calculate HIT price, or number of assignments for HIT
+def getHITScalingParam(min, max, step, taskTier)
+	if(min > max || min+(step*(taskTier)) < max)
+		return min+(step*(taskTier))
+	else
+		return max
+	end
+end
+
+def autoUpdate
+	processReviewableHits
+	genTasks
+end
+
+def getWorkerResponses
+	hits = getHITs
+	workers = Hash.new
+	hits.each do |hit|
+		answers = getAnswers(hit, "Approved")
+		answers.each do |a|
+			@mturk.simplifyAnswer(a[:Answer]).each do |key, row|
+				if(!row.kind_of?(Array))#stupid formatting stuff again
+					row = [row]
+				end
+				index = ""
+				row.each do |actualAnswer|
+					if(index=="")
+						index = actualAnswer.to_s
+					else
+						index = index +","+actualAnswer.to_s
+					end
+				end
+				
+				if(workers.has_key?(a[:WorkerId]))
+					workers[a[:WorkerId]] << index
+				else
+					workers[a[:WorkerId]] = Array.new
+					workers[a[:WorkerId]] << index
+				end
+			end
+		end
+	end
+	return workers
+end
+
 ################ Main ################
-processReviewableHits
-genTasks
+
+case ARGV[0]
+	when "getHITs"
+		puts getHITs
+	when "getHIT"
+		begin
+			puts getHIT(ARGV[1])
+		rescue
+			puts "Not enough arguments"
+		end
+	when "getWorkerResponses"
+		puts getWorkerResponses
+	when "test"
+		puts ""
+	else
+		autoUpdate
+end
+			
